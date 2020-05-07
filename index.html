@@ -29,7 +29,7 @@
 	}
 
 	body {
-		background: url(home_background.jpeg) no-repeat center center fixed;
+		background: url(imgs/home_background.jpeg) no-repeat center center fixed;
 		background-size: cover;
 		width: 100%;
 		height: 100%;
@@ -92,6 +92,7 @@
 		padding: 10px;
 		border-radius: 3px;
 		opacity: .75;
+		text-align: right;
 	}
 
 	.arrow-up {
@@ -104,6 +105,31 @@
 	  border-left: 5px solid transparent;
 	  border-right: 5px solid transparent;
 	  border-bottom: 5px solid #DAA520;
+	}
+
+	.contactDiv {
+		width: 75%;
+		height: 80%;
+		top: 10%;
+		margin-left: 12.5%;
+		position: fixed;
+		background-color: white;
+		left: 0;
+		z-index: 1;
+		border-radius: 8px;
+		border: 1px solid grey;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+
+	.contactDivInner {
+		padding: 50px;
+		text-align: right;
+		display: block;
+	}
+
+	.contactButton {
+		width: 35px;
+		height: 35px;
 	}
 
 
@@ -258,7 +284,7 @@
 		height: 625px;
 		text-align: center;
 		padding-top: 50px;
-		background: url(discoverBackground.png) no-repeat center center;
+		background: url(imgs/discoverBackground.png) no-repeat center center;
 		background-color: white;
 		z-index: -1;
 	}
@@ -659,20 +685,21 @@
 <body>
 	<div id="homeAnchor"></div>
 	<div class="navBar" id="navBarId">
-	<div id="navBarLeft" class="navBarGen navBarImg navBarLeft">
-		<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
-		
-	</div>
-	<div class="navBarGen navBarButton navBarRight">
-		<form class="searchform">
-     		<input class="searchfield" autocomplete="off" name="q" type="search" 
-        		placeholder="Quick Search" />
-		</form>
-		<div class="top">
- 			<button class="searchbtn"></button>
+		<div id="navBarLeft" class="navBarGen navBarImg navBarLeft">
+			<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
+			
+		</div>
+		<div class="navBarGen navBarButton navBarRight">
+			<form class="searchform">
+	     		<input class="searchfield" autocomplete="off" name="q" type="search" 
+	        		placeholder="Quick Search" />
+			</form>
+			<div class="top">
+	 			<button class="searchbtn"></button>
+			</div>
 		</div>
 	</div>
-	</div>
+	<div id="contactDivID"></div>
 	<div class="content">
 		<div class="searchBox">
 			<input type="text" class="inputBox" id="inputBox" placeholder="What are you looking for?" />
@@ -711,19 +738,19 @@
 			<div class="slideshow-container">
 				<div class="mySlides fade">
 				  <div class="numbertext">1 / 3</div>
-				  <img src="wine_background.jpg" style="width:100%">
+				  <img src="imgs/wine_background.jpg" style="width:100%">
 				  <div class="text"><h3 style="margin: 0;">Explore</h2></div>
 				</div>
 
 				<div class="mySlides fade">
 				  <div class="numbertext">2 / 3</div>
-				  <img src="beer_background.jpg" style="width:100%">
+				  <img src="imgs/beer_background.jpg" style="width:100%">
 				  <div class="text"><h3 style="margin: 0;">Explore</h2></div>
 				</div>
 
 				<div class="mySlides fade">
 				  <div class="numbertext">3 / 3</div>
-				  <img src="spirits_background.jpg" style="width:100%">
+				  <img src="imgs/spirits_background.jpg" style="width:100%">
 				  <div class="text"><h3 style="margin: 0;">Explore</h2></div>
 				</div>
 
@@ -796,7 +823,7 @@ function writeFooterBot(){
 						"<th><a class=\"footerA\" href=\"#\">Home &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Login &#9656;</a></th></tr><tr>" +
 						"<th><a class=\"footerA\" href=\"#\">Discover &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Register &#9656;</a></th></tr><tr>" +
 						"<th><a class=\"footerA\" href=\"#\">Explore &#9656;</a></th><th><a class=\"footerA\" href=\"#\">FAQ &#9656;</a></th></tr><tr>" +
-						"<th><a class=\"footerA\" href=\"#\">Shop Now &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Contact Us &#9656;</a></th></tr><tr>" +
+						"<th><a class=\"footerA\" href=\"#\">Shop Now &#9656;</a></th><th><a class=\"footerA\" onclick=\"showContactDiv()\">Contact Us &#9656;</a></th></tr><tr>" +
 					"</tr></table>" +
 				"</div>" + 
 			"</div>" +
@@ -852,7 +879,7 @@ function menuAction(){
 				"<a class=\"footerA\" href=\"#exploreAnchor\">Explore &#9656;</a>" +
 				"<a class=\"footerA\" href=\"#\">Shop Now &#9656;</a>" +
 				"<a class=\"footerA\" href=\"#\">FAQ &#9656;</a>" +
-				"<a class=\"footerA\" href=\"#\">Contact Us &#9656;</a>" +
+				"<a class=\"footerA\" onclick=\"showContactDiv()\">Contact Us &#9656;</a>" +
 
 
 			"</div>" +
@@ -861,6 +888,26 @@ function menuAction(){
 		menuShowing = true;
 	}
 	
+}
+
+var contactDivShowing = false;
+var element = document.getElementById("contactDivID");
+
+
+function showContactDiv(){
+	if(!contactDivShowing){
+		element.innerHTML = "<div class=\"contactDiv\"><div class=\"contactDivInner\"><button class=\"contactButton\" onclick=\"hideContactDiv()\">X</button></div></div>";
+		contactDivShowing = true;
+		element.focus();
+	} else {
+		element.innerHTML = "";
+		contactDivShowing = false;
+	}
+}
+
+function hideContactDiv(){
+	element.innerHTML = "";
+	contactDivShowing = false;
 }
 
 </script>
