@@ -11,6 +11,35 @@ window.onscroll = function() {
 	setHeaderLayout();
 }
 
+window.onload = function() {
+	createHeaderNavBar();
+}
+
+/* Initializes the Anchor, NavBar Left and Right */
+function createHeaderNavBar(){
+	var html = ""
+		html = "<div id=\"homeAnchor\"></div>" +
+		"<div class=\"navBar\" id=\"navBarId\">" +
+			"<div id=\"navBarLeft\" class=\"navBarGen navBarImg navBarLeft\">" +
+				"<button onclick=\"menuAction()\" class=\"footerA\" id=\"menubarButton\"></button>" +
+				
+			"</div>" +
+			"<div class=\"navBarGen navBarButton navBarRight\">" +
+				"<form class=\"searchform\">" +
+		     		"<input id=\"navSearchField\" class=\"searchfield\" autocomplete=\"off\" name=\"navSearchField\" type=\search\"" +
+		        		"placeholder=\"Quick Search\" />" +
+				"</form>" +
+				"<div class=\"top\">" +
+		 			"<button class=\"searchbtn\"></button>" +
+				"</div>" +
+			"</div>" +
+		"</div>" +
+		"<div id=\"contactDivID\"></div>";
+	
+	document.getElementById("createHeaderDiv").innerHTML = html;
+}
+
+/* Changes the layout of the NavBar and Footer based on scroll position */
 function setHeaderLayout(){
 	var header = document.getElementById("navBarId");
 	var footer = document.getElementById("footer");
@@ -59,17 +88,6 @@ function writeFooterBot(){
 }
 
 
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
 var menuShowing = false;
 
 function menuAction(){
@@ -101,6 +119,7 @@ function menuAction(){
 	
 }
 
+/* Contact Form Functions */
 var contactDivShowing = false;
 
 
@@ -140,3 +159,4 @@ function writeContactLayout(){
 function submitContactMessage(){
 	hideContactDiv();
 }
+/* End of Contact Form Functions */
