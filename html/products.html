@@ -56,9 +56,11 @@
 	}
 
 	.scrollingProductDivLeft {
-		width: 30vw;
+		width: 40vw;
 		height: 600px;
 		position: relative;
+		background-color: black;
+		opacity: .5;
 	}
 
 	.scrollingProductDivLeftInner {
@@ -66,18 +68,46 @@
 		padding: 0;
 		position: absolute;
 		bottom: 30px;
-		background-color: white;
-		opacity: .75;
 		width: 90%;
 		height: 35%;
 		left: 5%;
 	}
 
 	.scrollingProductDivRight {
-		width: 70vw;
+		width: 60vw;
 		height: 600px;
-		background-color: white;
 		opacity: .5;
+		display: flex;
+		background-color: black;
+		position: relative;
+	}
+
+	.arrowDiv {
+		min-width: 50px;
+		max-width: 50px;
+		height: 100%;
+	}
+
+	.scrollingProductDivRight_Center {
+		min-width: 500px;
+		width: 100%;
+		background-color: black;
+	}
+
+	.arrows, .arrows:visited {
+		opacity: 1;
+		color: white;
+		font-size: 50px;
+		padding: 5px;
+		border-radius: 5px;
+		position: absolute;
+		top: 250px;
+	}
+
+	.arrows:hover {
+		background-color: white;
+		color: black;
+		cursor: pointer;
 	}
 
 	
@@ -119,7 +149,13 @@
 			<div class="scrollingProductDivLeft">
 				<div class="scrollingProductDivLeftInner"></div>
 			</div>
-			<div class="scrollingProductDivRight">stuff in here</div>
+			<div class="scrollingProductDivRight">
+				
+				<div class="scrollingProductDivRight_Left arrowDiv"><a class="arrows prev" onclick="">&#10094;</a></div>
+				<div class="scrollingProductDivRight_Center"></div>
+				<div class="scrollingProductDivRight_Right arrowDiv"><a class="arrows next">&#10095;</a></div>
+
+			</div>
 		</div>
 
 
