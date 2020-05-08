@@ -15,7 +15,7 @@
 	}
 
 	body {
-		background: url(imgs/home_background.jpeg) no-repeat center center fixed;
+		background: url(../imgs/home_background.jpeg) no-repeat center center fixed;
 		background-size: cover;
 		width: 100%;
 		height: 100%;
@@ -29,7 +29,7 @@
 		display: flex;
 		position: fixed;
 		background-color: white;
-		background: url(navIcons/ddlogo.png) no-repeat center center;
+		background: url(../imgs/navIcons/ddlogo.png) no-repeat center center;
 		background-size: 96.5px 75px;
 		z-index: 1;
 	}
@@ -56,7 +56,7 @@
 	#menubarButton {
 		width: 40px;
 		height: 40px;
-		background: url(navIcons/menubar.png) no-repeat center center;
+		background: url(../imgs/navIcons/menubar.png) no-repeat center center;
 		background-size: 25px 25px;
 		background-color: transparent;
 		border: none;
@@ -125,7 +125,7 @@
 
 	.midContactDivLeft {
 		width: 50%;
-		background: url(imgs/contact_background.png) no-repeat center right;
+		background: url(../imgs/contact_background.png) no-repeat center right;
 		background-image: 75%;
 	}
 
@@ -232,7 +232,7 @@
 	}
 
 	.searchbtn{
-		background: url(navIcons/spyglass.png) no-repeat center center;
+		background: url(../imgs/navIcons/spyglass.png) no-repeat center center;
 		background-size: 25px 25px;
 		border: none;
 		border-radius: 8px;
