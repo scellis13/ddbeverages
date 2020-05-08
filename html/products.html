@@ -52,6 +52,32 @@
 		background-size: 100% 100%;
 		border-top: 1px solid lightgrey;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
+		display: flex;
+	}
+
+	.scrollingProductDivLeft {
+		width: 30vw;
+		height: 600px;
+		position: relative;
+	}
+
+	.scrollingProductDivLeftInner {
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		bottom: 30px;
+		background-color: white;
+		opacity: .75;
+		width: 90%;
+		height: 35%;
+		left: 5%;
+	}
+
+	.scrollingProductDivRight {
+		width: 70vw;
+		height: 600px;
+		background-color: white;
+		opacity: .5;
 	}
 
 	
@@ -89,7 +115,12 @@
 
 	<!-- *******************HTML start ******************* -->
 	<div class="content">
-		<div class="scrollingProductDiv"></div>
+		<div class="scrollingProductDiv">
+			<div class="scrollingProductDivLeft">
+				<div class="scrollingProductDivLeftInner"></div>
+			</div>
+			<div class="scrollingProductDivRight">stuff in here</div>
+		</div>
 
 
 
