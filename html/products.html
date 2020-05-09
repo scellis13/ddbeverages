@@ -44,23 +44,21 @@
 	}
 
 	.scrollingProductDiv {
-		min-width: 99vw;
+		min-width: 1100px;
 		max-width: 99vw;
 		min-height: 600px;
 		max-height: 600px;
 		background: url(../imgs/products_imgs/scroll_background.png) no-repeat center center;
 		background-size: 100% 100%;
-		border-top: 1px solid lightgrey;
+		border-top: 1px solid grey;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
 		display: flex;
 	}
 
 	.scrollingProductDivLeft {
-		width: 40vw;
+		width: 30vw;
 		height: 600px;
 		position: relative;
-		background-color: black;
-		opacity: .5;
 	}
 
 	.scrollingProductDivLeftInner {
@@ -73,13 +71,22 @@
 		left: 5%;
 	}
 
+	.scrollingProductDivLeftInner > p {
+		margin: 0;
+		padding: 0;
+		color: white;
+		font-family: "Edwardian Script ITC";
+		font-size: 30px;
+		position: absolute;
+		bottom: 0;
+	}
+
 	.scrollingProductDivRight {
-		width: 60vw;
+		width: 70vw;
 		height: 600px;
-		opacity: .5;
 		display: flex;
-		background-color: black;
 		position: relative;
+
 	}
 
 	.arrowDiv {
@@ -89,9 +96,12 @@
 	}
 
 	.scrollingProductDivRight_Center {
-		min-width: 500px;
+		min-width: 700px;
 		width: 100%;
-		background-color: black;
+		display: flex;
+		justify-content: space-between;
+		padding-left: 50px;
+		padding-right: 50px;
 	}
 
 	.arrows, .arrows:visited {
@@ -110,7 +120,50 @@
 		cursor: pointer;
 	}
 
-	
+	.productDisplayDivContainer {
+		display: block;
+		width: 225px;
+		height: 600px;
+		margin: 0;
+		opacity: 1;
+	}
+
+	.productDisplayDivContainer:hover {
+		border: 0 1px 0 1px solid black;
+		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+
+	/* Product Images should be 200x400*/
+	.productDisplayDiv {
+		width: 225px;
+		height: 400px;
+		margin-top: 75px;
+		min-width: 200px;
+	}
+
+	.productDisplayLabelDiv {
+		height: 100px;
+		max-height: 100px;
+		width: 225px;
+		margin-top: 10px;
+		text-align: center;
+		font-family: "Brush Script MT";
+		font-size: 28px;
+		max-width: 225px;
+		text-overflow: ellipsis;
+		overflow-wrap: normal;
+		text-shadow: 1px 1px black;
+  		color: white;
+  		opacity: 1;
+	}
+
+	.productFullTableContent {
+		height: 1000px;
+		width: 99vw;
+		background-color: white;
+		margin: 0;
+		padding: 0;
+	}
 
 
 </style>
@@ -147,18 +200,35 @@
 	<div class="content">
 		<div class="scrollingProductDiv">
 			<div class="scrollingProductDivLeft">
-				<div class="scrollingProductDivLeftInner"></div>
+				<div class="scrollingProductDivLeftInner"><p>Top Shelf</p></div>
 			</div>
 			<div class="scrollingProductDivRight">
 				
 				<div class="scrollingProductDivRight_Left arrowDiv"><a class="arrows prev" onclick="">&#10094;</a></div>
-				<div class="scrollingProductDivRight_Center"></div>
+				<div class="scrollingProductDivRight_Center">
+					<div id="leftProductDisplayDivContainer" class="productDisplayDivContainer" onmouseover="showProductLabel('left')" onmouseout="hideProductLabel('left')">
+						<div id="leftProductDisplayDiv" class="productDisplayDiv leftProductDisplayDiv"></div>
+						<div id="leftProductDisplayLabel" class="productDisplayLabelDiv"></div>
+					</div>
+					<div id="centerProductDisplayDivContainer" class="productDisplayDivContainer" onmouseover="showProductLabel('center')" onmouseout="hideProductLabel('center')">
+						<div id="centerProductDisplayDiv" class="productDisplayDiv centerProductDisplayDiv">
+						</div>
+						<div id="centerProductDisplayLabel" class="productDisplayLabelDiv"></div>
+					</div>
+					<div id="rightProductDisplayDivContainer"class="productDisplayDivContainer" onmouseover="showProductLabel('right')" onmouseout="hideProductLabel('right')">
+						<div id="rightProductDisplayDiv" class="productDisplayDiv rightProductDisplayDiv"></div>
+						<div id="rightProductDisplayLabel" class="productDisplayLabelDiv"></div>
+					</div>
+					
+				</div>
 				<div class="scrollingProductDivRight_Right arrowDiv"><a class="arrows next">&#10095;</a></div>
 
 			</div>
 		</div>
 
-
+		<div class="productFullTableContent">
+			
+		</div>
 
 
 	</div>
@@ -167,7 +237,6 @@
 
 
  <!-- DO NOT CHANGE -->
-	<div class="backgroundSpacing"></div>
 	<div id="footer" class="footer footerTop">
 		<p>&copy; 2020, Dynamic Developers</p>
 	</div>
@@ -179,6 +248,72 @@
 
 <!-- *******************SCRIPTING start - Personal Page ******************* -->
 <script> 
+var topShelfProductArray = [];
+var leftScrollProduct = [];
+var centerScrollProduct = [];
+var rightScrollProduct = [];
+
+function createTopShelfArray(){
+	var eagle_rare = ["Eagle Rare 10 Year Bourbon", "../imgs/products_imgs/topshelf/eagle_rare.png"];
+	var blantons_original = ["Blanton's Original Single Barrel", "../imgs/products_imgs/topshelf/blantons_original.png"];
+	var lagavulin = ["Lagavulin 16 Year", "../imgs/products_imgs/topshelf/lagavulin.png"];
+	topShelfProductArray.push(eagle_rare, blantons_original, lagavulin);
+	leftScrollProduct = topShelfProductArray[0];
+	centerScrollProduct = topShelfProductArray[1];
+	rightScrollProduct = topShelfProductArray[2];
+}
+
+
+createTopShelfArray();
+setProductPicture('center');
+setProductPicture('left');
+setProductPicture('right');
+
+
+
+function showProductLabel(direction){
+	
+	switch (direction) {
+		case 'left':
+			document.getElementById("leftProductDisplayLabel").innerText = leftScrollProduct[0];
+			break;
+		case 'center':
+			document.getElementById("centerProductDisplayLabel").innerText = centerScrollProduct[0];
+			break;
+		case 'right':
+			document.getElementById("rightProductDisplayLabel").innerText = rightScrollProduct[0];
+			break;
+	}
+}
+
+function hideProductLabel(direction){
+	switch (direction) {
+		case 'left':
+			document.getElementById("leftProductDisplayLabel").innerText = "";
+			break;
+		case 'center':
+			document.getElementById("centerProductDisplayLabel").innerText = "";
+			break;
+		case 'right':
+			document.getElementById("rightProductDisplayLabel").innerText = "";
+			break;
+	}
+	
+}
+
+function setProductPicture(direction){
+	switch (direction) {
+		case 'left':
+			document.getElementById("leftProductDisplayDiv").style.background = "url(" + leftScrollProduct[1] + ") no-repeat center center";
+			break;
+		case 'center':
+			document.getElementById("centerProductDisplayDiv").style.background = "url(" + centerScrollProduct[1] + ") no-repeat center center";
+			break;
+		case 'right':
+			document.getElementById("rightProductDisplayDiv").style.background = "url(" + rightScrollProduct[1] + ") no-repeat center center";
+			break;
+	}
+}
 
 
 </script>  
