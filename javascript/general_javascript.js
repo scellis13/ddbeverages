@@ -55,7 +55,7 @@ function writeFooterBot(){
 						"<th><a class=\"footerA\" href=\"index.html#\">Home &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Login &#9656;</a></th></tr><tr>" +
 						"<th><a class=\"footerA\" href=\"index.html#discoverAnchor\">Discover &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Register &#9656;</a></th></tr><tr>" +
 						"<th><a class=\"footerA\" href=\"index.html#exploreAnchor\">Explore &#9656;</a></th><th><a class=\"footerA\" href=\"#\">FAQ &#9656;</a></th></tr><tr>" +
-						"<th><a class=\"footerA\" href=\"#\">Shop Now &#9656;</a></th><th><a class=\"footerA\" onclick=\"showContactDiv()\">Contact Us &#9656;</a></th></tr><tr>" +
+						"<th><a class=\"footerA\" href=\"products.html\">Shop Now &#9656;</a></th><th><a class=\"footerA\" onclick=\"showContactDiv()\">Contact Us &#9656;</a></th></tr><tr>" +
 					"</tr></table>" +
 				"</div>" + 
 			"</div>" +
@@ -82,7 +82,7 @@ function menuAction(){
 				"<a class=\"footerA\" href=\"index.html#\">Home &#9656;</a>" +
 				"<a class=\"footerA\" href=\"index.html#discoverAnchor\">Discover &#9656;</a>" +
 				"<a class=\"footerA\" href=\"index.html#exploreAnchor\">Explore &#9656;</a>" +
-				"<a class=\"footerA\" href=\"#\">Shop Now &#9656;</a>" +
+				"<a class=\"footerA\" href=\"products.html\">Shop Now &#9656;</a>" +
 				"<a class=\"footerA\" href=\"#\">FAQ &#9656;</a>" +
 				"<a class=\"footerA\" onclick=\"showContactDiv()\">Contact Us &#9656;</a>" +
 
