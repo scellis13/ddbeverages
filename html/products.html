@@ -28,6 +28,7 @@
 	.navBar {
 		background-color: gainsboro;
 		opacity: .95;
+		z-index: 2;
 		
 	}
 
@@ -151,7 +152,7 @@
 	.productDisplayLabelDiv {
 		max-height: 100px;
 		width: 80%;
-		min-width: 225px;
+		min-width: 200px;
 		margin-top: 10px;
 		text-align: center;
 		font-family: "Brush Script MT";
@@ -161,12 +162,11 @@
 		text-shadow: 1px 1px black;
   		color: white;
   		border-radius: 3px;
-  		margin-left: 10%;
+  		margin-left: 5%;
 	}
 
 	.productTableContent {
-		height: 1000px;
-		width: 99vw;
+		width: 98.75vw;
 		background-color: gainsboro;
 		margin: 0;
 		padding: 0;
@@ -179,21 +179,94 @@
 		min-width: 200px;
 		height: 100%
 		padding-top: 50px;
+		display: inline-block;
+		margin-right: 10px;
+		background-color: white;
+		border: inset 2px #C3C3C3;
+	}
+
+	.productTableFilterDiv {
+		padding: 15px;
+		margin-left: 10px;
+		overflow: hidden;
+		white-space: nowrap;
+		
+
+	}
+
+	.productTableFilterDiv hr {
+		margin-top: 30px;
+		margin-bottom: 0;
+	}
+
+	.tableFilterDivRow {
+		display: flex;
+		align-items: center;
+		margin-top: 5px;
+		position: relative;
+		overflow: hidden;
+		white-space: nowrap;
+		justify-content: space-between;
+	}
+
+	.productTableFilterDiv input[type="search"], input[type="search"]:focus {
+		font-size: 14px;
+		padding: 5px 0 5px 25px;
+		width: 150px;
+		border-radius: 3px;
+		background: url(../imgs/navIcons/spyglass.png) no-repeat center left;
+		background-size: 20px 20px;
+		
+	}
+
+	.productTableFilterDiv input[type="search"]:focus, input[type="search"]:hover {
+		outline: solid #DAA520;
+	}
+
+	.tableFilterDivRow p {
+		margin: 0;
+		padding: 5px;
+		font-family: arial;
+		font-size: 14px;
+		position: relative;
+		text-overflow: clip;
+		white-space: nowrap;
+		overflow: hidden;
+		font-weight: bold;
+	}
+
+	.dropDownArrow {
+		position: absolute;
+		right: 5px;
+		color: #7A6144;
+	}
+
+	.dropDownArrowSelected {
+		position: absolute;
+		right: 5px;
+		color: grey;
+	}
+
+	input[type="checkbox"] {
+		height: 20px;
+  		width: 20px;
+  		border-radius: 3px;
 	}
 
 	.productTableRowContainer {
 		margin: 0;
 		padding: 0;
 		background-color: gainsboro;
+		display: inline-block;
 	}
 
 	.productTableTopRow {
-		width: 80vw;
 		text-align: left;
 		padding: 10px;
 		font-weight: bold;
 		background-color: gainsboro;
 		min-width: 1000px;
+		display: inline-block;
 	}
 
 	.productTableRow {
@@ -260,6 +333,19 @@
 	  opacity: 0.7;
 	}
 
+	.filterContainer {
+		position: relative;
+	}
+
+	.filterLabel {
+		padding: 5px;
+		font-size: 14px;
+		padding-left: 15px;
+		text-align: left;
+		text-overflow: clip;
+		overflow: hidden;
+	}
+
 
 </style>
 <!-- *******************STYLING end ******************* -->
@@ -322,64 +408,60 @@
 		</div>
 
 		<div class="productTableContent">
-			<div class="productTableFilters"></div>
-				<div class="productTableRowContainer">
-					<div class="productTableTopRow">&#9656; Found 0 Search Results with: ''</div>
-					<div class="productTableRow">
-						<div class="productTableRowLiner"></div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						<div class="card">
-							<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-							<h2>Eagle Rare</h2>
-							<p class="price">$50.00</p>
-							<p><button>Add to Cart</button></p>
-						</div>
-						
+			<div class="productTableFilters">
+				
+				<div class="productTableFilterDiv"><input type="search" id="productFilterSearch" /></div>
+				<div class="productTableFilterDiv">
+					<div class="tableFilterDivRow"><input type="checkbox" /><p>Wine</p><p class="dropDownArrow">&#9658;</p></div>
+					<div class="tableFilterDivRow"><input type="checkbox" /><p>Spirits</p><p class="dropDownArrow">&#9658;</p></div>
+					<div class="tableFilterDivRow"><input type="checkbox" /><p>Beer</p><p class="dropDownArrow">&#9658;</p></div>
+
+				</div>
+			</div> <!-- End of Table Filter Column -->
+			<div class="productTableRowContainer">
+				<div class="productTableTopRow">
+					&#9656; Found 0 Search Results with: ""
+				</div>
+				<div class="productTableRow">
+					<div class="productTableRowLiner"></div>
+					<div class="card">
+						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
+						<h2>Eagle Rare</h2>
+						<p class="price">$50.00</p>
+						<p><button>Add to Cart</button></p>
+					</div>
+					<div class="card">
+						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
+						<h2>Eagle Rare</h2>
+						<p class="price">$50.00</p>
+						<p><button>Add to Cart</button></p>
+					</div>
+					<div class="card">
+						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
+						<h2>Eagle Rare</h2>
+						<p class="price">$50.00</p>
+						<p><button>Add to Cart</button></p>
+					</div>
+					<div class="card">
+						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
+						<h2>Eagle Rare</h2>
+						<p class="price">$50.00</p>
+						<p><button>Add to Cart</button></p>
+					</div>
+					<div class="card">
+						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
+						<h2>Eagle Rare</h2>
+						<p class="price">$50.00</p>
+						<p><button>Add to Cart</button></p>
+					</div>
+					<div class="card">
+						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
+						<h2>Eagle Rare</h2>
+						<p class="price">$50.00</p>
+						<p><button>Add to Cart</button></p>
 					</div>
 				</div>
-
-				
+			</div>
 		</div>
 
 	<div class="backgroundSpacing"></div>
