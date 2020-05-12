@@ -24,7 +24,9 @@
 
 	.navBar {
 		width: 95%;
+		min-width: 1000px;
 		height: 15px;
+		min-height: 30px;
 		padding: 2.5%;
 		display: flex;
 		position: fixed;
