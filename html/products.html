@@ -262,6 +262,15 @@
 	.subRow {
 		margin-left: 35px;
 		cursor: default;
+		display: none;
+	}
+
+	.subRowShowing {
+		display: flex;
+	}
+
+	.subRowHiding {
+		display: none;
 	}
 
 	.productTableRowContainer {
@@ -410,12 +419,9 @@
 			<div class="productTableFilters">
 				
 				<div class="productTableFilterDiv"><input type="search" id="productFilterSearch" /></div>
-				<div class="productTableFilterDiv">
-					<div name="WineRow" class="tableFilterDivRow MenuSelect"><input type="checkbox" name="Wine" /><p>Wine</p><p class="dropDownArrowSelected">&#9660;</p></div>
-						
-					<div name="SpiritsRow" class="tableFilterDivRow MenuSelect"><input type="checkbox" name="Spirits" /><p>Spirits</p><p class="dropDownArrowSelected">&#9660;</p></div>
-						
-					<div name="BeerRow" class="tableFilterDivRow MenuSelect"><input type="checkbox" name="Beer" /><p>Beer</p><p class="dropDownArrowSelected">&#9660;</p></div>
+				<div id="filterListDiv" class="productTableFilterDiv">
+					
+					<!-- Javascript Generated Filter List -->
 						
 				</div>
 			</div> <!-- End of Table Filter Column -->
@@ -550,171 +556,55 @@ function setProductPicture(direction){
 	}
 }
 
-var wineFilterExpanded = false;
-var spiritsFilterExpanded = false;
-var beerFilterExpanded = false;
-var wineFilterAll = false;
-var spiritsFilterAll = false;
-var beerFilterAll = false;
 
 var filterArray = [];
-var wineFilters = [["Red", false] , ["White", false], ["Rose", false], ["Dessert", false], ["Champagne", false]];
-var spiritsFilters = [["Gin", false], ["Vodka", false], ["Rum", false], ["Tequila", false], ["Brandy", false], ["Whiskey", false], ["Bourbon", false], ["Scotch", false]];
-var beerFilters = [["IPA", false], ["Stout", false], ["Lager", false], ["Ale", false]];
+var filterData = [["Wine", "Red"] , ["Wine", "White"], ["Wine", "Rose"], ["Wine", "Dessert"], ["Wine", "Champagne"], ["Beer", "IPA"], ["Beer", "Stout"], ["Beer", "Lager"], ["Beer", "Ale"], ["Spirits", "Gin"], ["Spirits", "Vodka"], ["Spirits", "Rum"], ["Spirits", "Tequila"], ["Spirits", "Brandy"], ["Spirits", "Whiskey"], ["Spirits", "Bourbon"], ["Spirits", "Scotch"]];
+var primaryFilters = [];
+var subFilters = [];
 
-$(document).ready(function() {
-    $(".tableFilterDivRow").hover(function() {
-    	var name = $(this).attr('name');
-        var ele = document.getElementsByName(name)[0];
+filterData.forEach(function(item, index){
+	var filterListDiv = document.getElementById("filterListDiv");
+	var primFiltTemp = item[0];
+	if(!(primaryFilters.includes(primFiltTemp)) ){
+		primaryFilters.push(primFiltTemp);
+		$( "<div id=\""+primFiltTemp+"PrimaryFilterDiv\" class=\"tableFilterDivRow "+primFiltTemp+"MenuSelect\"><input type=\"checkbox\" id=\""+primFiltTemp+"CheckBox\" class=\"primCheckBox\" /><p>"+primFiltTemp+"</p><p id=\""+primFiltTemp+"Arrow\" class=\"dropDownArrow\">&#9660;</p></div>" ).insertAfter("#filterListDiv");
+	}
+
+	//Add to primFiltTemp + PrimaryFilter
+	$( "<div id=\"" + item[1] + "SubFilterDiv\" class=\"tableFilterDivRow subRow "+primFiltTemp+"PrimaryFilterDiv\"><input class=\"subCheckBox\" id =\"" + item[1] + "SubCheckBox\" type=\"checkbox\" /><p>"+item[1]+"</p></div>" ).insertAfter( "#"+primFiltTemp+"PrimaryFilterDiv" );
+
+
+});
+
+setPrimaryFilterFunctions();
+
+function setPrimaryFilterFunctions(){
+	$(".tableFilterDivRow").hover(function() {
+    	var name = $(this).attr('id');
+    	var ele = document.getElementById(name);
         ele.classList.add("tableFilterDivRowHovered");
     });
-
     $(".tableFilterDivRow").mouseout(function() {
-    	var name = $(this).attr('name');
-        var ele = document.getElementsByName(name)[0];
+    	var name = $(this).attr('id');
+    	var ele = document.getElementById(name);
         ele.classList.remove("tableFilterDivRowHovered");
     });
- });
 
-$('input[type=checkbox]').change(
-    function(){
-        var name = $(this).attr('name');
-        var selected = [];
-        switch(name){
-        	case 'Wine':
-        		if(wineFilterAll){
-        			wineFilterAll = false;
-        		} else {
-        			wineFilterAll = true;
-        		}
-        		changeFilter(wineFilters, wineFilterAll);
-        		break;
-        	case 'Spirits':
-        		if(spiritsFilterAll){
-        			spiritsFilterAll = false;
-        		} else {
-        			spiritsFilterAll = true;
-        		}
-        		changeFilter(spiritsFilters, spiritsFilterAll);
-        		break;
-        	case 'Beer':
-        		if(beerFilterAll){
-        			beerFilterAll = false;
-        		} else {
-        			beerFilterAll = true;
-        		}
-        		changeFilter(beerFilters, beerFilterAll);
-        		break;
-        }
-  });
-
-
-function changeFilter(filterList, choice){
-	alert(filterList + choice);
-	//True means Add, False means Remove
-	filterList.forEach(function(item, index) {
-		item[1] = choice;
-		$('input[type=checkbox]').each(function () {
-			if(item === $(this).attr('name')){
-				var val = $(this).is(":checked");
-				if(choice !== val){
-					$(this).click();
-				}
-	    	}
-		});
-	});
+    $(".tableFilterDivRow").click(function() {
+    	var name = $(this).attr('id');
+    	var eles = document.getElementsByClassName(name);
+    	for(var i = 0; i < eles.length; i++){
+    		if (eles[i].style.display === "flex") {
+			  eles[i].style.display = "none";
+			  } else {
+			  eles[i].style.display = "flex";
+			}  
+    	}
+    });
 }
 
-$(document).ready(function() {
-    $(".MenuSelect").click(function() {
-        var name = $(this).attr('name');
-        var ele = document.getElementsByName(name)[0];
-		var showFilter = new Array();
-        switch(name){
-        	case 'WineRow':
-        		if(wineFilterExpanded){
-        			
-        			wineFilters.forEach(function(item, index){
-        				var child = document.getElementsByName(item[0])[0];
-        				child.parentNode.removeChild(child);
-        			});
-        			wineFilterExpanded = false;
-        			
-        		} else {
-        			showFilter = wineFilters;
-        			wineFilterExpanded = true;
-        		}
-        		break;
-        	case 'SpiritsRow':
-        		if(spiritsFilterExpanded){
-        			spiritsFilters.forEach(function(item, index){
-        				var child = document.getElementsByName(item[0])[0];
-        				child.parentNode.removeChild(child);
-        			});
-        			spiritsFilterExpanded = false;
-        		} else {
 
-        			showFilter = spiritsFilters;
-        			spiritsFilterExpanded = true;
-        		}
-        		break;
 
-        	case 'BeerRow':
-        		if(beerFilterExpanded){
-        			beerFilters.forEach(function(item, index){
-        				var child = document.getElementsByName(item[0])[0];
-        				child.parentNode.removeChild(child);
-        			});
-        			beerFilterExpanded = false;
-        		} else {
-        			showFilter = beerFilters;
-        			beerFilterExpanded = true;
-        		}
-        		break;
-        }
-
-        showFilter.forEach(function(item, index) {
-        	var checked = "";
-        	if(item[1] === true){
-        		checked = "checked";
-        	}
-
-			$( "<div name=\"" + item[0] + "\" class=\"tableFilterDivRow subRow\"><input class=\"subCheckBox\" name =\"" + item[0] + "CheckBox\" type=\"checkbox\"" + checked + " /><p>"+item[0]+"</p></div>").insertAfter(ele);
-
-			$(".subCheckBox").change(function(){
-				var n = $(this).attr('name');
-				alert(n);
-				var i = document.getElementsByName(n)[0];
-				alert(i);
-	        	if (i.checked) {
-	        		alert(i + " pushed to filterArray.");
-	            	filterArray.push(item[0]);
-	            	item[1] = true;
-	        	} else {
-	        		filterArray.remove(item[0]);
-	        		item[1] = false;
-	        	}
-			});
-		});
-
-        $(document).ready(function() {
-		    $(".tableFilterDivRow").hover(function() {
-		    	var name = $(this).attr('name');
-		        var ele = document.getElementsByName(name)[0];
-		        ele.classList.add("tableFilterDivRowHovered");
-		    });
-
-		    $(".tableFilterDivRow").mouseout(function() {
-		    	var name = $(this).attr('name');
-		        var ele = document.getElementsByName(name)[0];
-		        ele.classList.remove("tableFilterDivRowHovered");
-		    });
-		 });
-
-        
-        
-    });
-});
 
 </script>  
 <!-- *******************SCRIPTING end - Personal Page ******************* -->
