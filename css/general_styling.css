@@ -12,11 +12,13 @@
 		width: 100%;
 		height: 100%;
 		scroll-behavior: smooth;
+		background-color: #404040;
 	}
 
 	body {
 		background: url(../imgs/home_background.jpeg) no-repeat center center fixed;
 		background-size: cover;
+		min-width: 1100px;
 		width: 100%;
 		height: 100%;
 		background-color: transparent;
@@ -24,15 +26,15 @@
 
 	.navBar {
 		width: 95%;
-		min-width: 1000px;
-		height: 15px;
-		min-height: 30px;
-		padding: 2.5%;
+		min-width: 800px;
+		padding: 15px;
+		padding-left: 50px;
+		padding-right: 50px;
 		display: flex;
 		position: fixed;
-		background-color: white;
 		background: url(../imgs/navIcons/ddlogo.png) no-repeat center center;
-		background-size: 96.5px 75px;
+		background-color: #404040;
+		background-size: 75px;
 		z-index: 1;
 	}
 
@@ -41,15 +43,11 @@
 	}
 
 	.navBarScrolled {
-		height: 15px;
 		transition: 1s;
-		opacity: .9;
-		background-color: white;
+		background-color: #404040;
 	}
 
 
-	.navBarGen {
-	}
 
 	.navBarLeft {
 		text-align: left;
@@ -71,9 +69,9 @@
 
 	.dropDownMenu {
 		position: fixed;
-		margin-top: 10px;
+		margin-top: 50px;
 		left: 25px;
-		width: 100px;
+		width: 115px;
 		background-color: white;
 		border: 1px solid #DAA520;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -81,13 +79,25 @@
 		border-radius: 3px;
 		opacity: 1;
 		text-align: right;
+		display: inline-block;
+	}
+
+	.navItem {
+		width: 100px;
+		margin: 0;
+		padding: 0;
+
+	}
+
+	.navItemColor {
+		color: black !important;
 	}
 
 	.arrow-up {
 	  position: fixed;
-	  z-index: -1;
-	  left: 40px;
-	  margin-top: 5px;
+	  z-index: 1;
+	  left: 35px;
+	  margin-top: 0px;
 	  width: 0; 
 	  height: 0; 
 	  border-left: 5px solid transparent;
@@ -103,7 +113,7 @@
 		position: fixed;
 		background-color: white;
 		left: 0;
-		z-index: 1;
+		z-index: 2;
 		border-radius: 8px;
 		border: 1px solid grey;
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -285,6 +295,7 @@
 
 
 	.footer {
+		color: white;
 		min-width: 1000px;
 		position: fixed;
 		left: 0;
@@ -296,7 +307,7 @@
 	.footerTop {
 		text-align: right;
 		opacity: .75;
-		color: white;
+		color: black !important;
 	}
 
 	.footerTop > p {
@@ -308,27 +319,30 @@
 
 	.footerScroll {
 		transition: 1s;
-		background-color: white;
+		background-color: #404040;
 		opacity: .5;
-		color: black;
+		color: gainsboro;
 		display: flex;
+		width: 100vw;
 	}
 
 	.footerBot {
+		font-weight: normal;
 		opacity: .9;
 		display: block;
 		font-size: 15px;
 		height: 200px;
-		background-color: lightgrey;
-		color: black;
+		background-color: #404040;
+		color: gainsboro !important;
 		transition: 1s;
+		width: 100vw;
 	}
 	
 
 
 	.footerA {
 	    display: inline-block;
-	    color: #000;
+	    color: gainsboro;
 	    text-decoration: none;
 	    font-weight: bold;
 	}
@@ -355,7 +369,7 @@
 	.footerBotTopDiv {
 		padding: 20px;
 		width: 97.5%;
-		background-color: lightgrey;
+		background-color: #404040;
 		display: flex;
 		position: absolute;
 		bottom: 40px;
@@ -422,7 +436,7 @@
 		text-align: center;
 		bottom: 30px;
 		position: absolute;
-		background-color: lightgrey;
+		background-color: #404040;
 		border-top: 1px solid grey;
 	}
 
@@ -430,7 +444,7 @@
 		padding: 5px;
 		width: 100%;
 		text-align: center;
-		background-color: lightgrey;
+		background-color: #404040;
 		bottom: 0;
 		position: absolute;
 		border-top: 1px solid grey;
