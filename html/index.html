@@ -16,20 +16,13 @@
 </head>
 
 <style>
-	
-	body {
-		background: url(../imgs/index_top3.png) no-repeat center center;
-		background-size: 100%;
-	}
+
 
 	.topAlertDiv {
 		background-color: #DAA520;
 		opacity: .97.5;
-		position: relative;
-		margin-top: 70px;
 		width: 100%;
-		display: inline-block;
-
+		padding-top: 10px;
 	}
 
 	.topAlertDiv > p {
@@ -37,10 +30,9 @@
 		width: 100%;
 		font-size: 24px;
 		text-align: center;
-		padding-top: 10px;
-		margin-bottom: 10px;
-		margin-top: 0;
 		color: black;
+		margin: 0;
+		margin-top: 10px;
 	}
 
 	.topAlertDiv button {
@@ -49,6 +41,7 @@
 		padding: 10px;
 		font-size: 20px;
 		text-decoration: none;
+		margin-bottom: 10px;
 	}
 
 	.topAlertDiv button:hover {
@@ -65,22 +58,20 @@
 		text-decoration: none;
 	}
 
+	
 
-	.anchor {
-		padding-bottom: 150px;
-		background-color: white;
-		opacity: .9;
+	.searchDiv {
+		width: 100%;
+		background: url(../imgs/index_top3.png) no-repeat center center;
+		background-size: 100% 100%;
+		height: 800px;
+		position: relative;
+
+
 	}
-
-	.content {
-		padding-top: 150px;
-		background-color: transparent;
-	}
-
 
 	.searchBox {
 		width: 50%;
-		margin-top: 150px;
 		margin-left: 25%;
 		border-radius: 6px;
 		background-color: black;
@@ -89,8 +80,8 @@
 		justify-content: space-between;
 		padding: 25px;
 		display: flex;
-		position: relative;
-		margin-bottom: 350px;
+		position: absolute;
+		top: 45%;
 	}
 
 	.searchBox > input {
@@ -139,10 +130,10 @@
 
 	.adSlotDiv {
 		width: 100%;
-		height: 800px;
+		height: 750px;
 		background: url(../imgs/index_top.png) no-repeat center center;
 		background-size: 100%;
-		position: relative;
+
 	}
 
 	.discoverDiv {
@@ -166,7 +157,7 @@
 	  font-size: 40px;
 	  padding: 8px 12px;
 	  margin-left: 37.5%;
-	  margin-top: -100px;
+	  margin-top: -80px;
 	  margin-bottom: 15px;
 	  max-width: 25%;
 	  text-align: center;
@@ -235,33 +226,46 @@
 
 
 <body>
-	<div id="topAnchor"></div>
 	<div class="navBar" id="navBarId">
-		<div id="navBarLeft" class="navBarGen navBarImg navBarLeft">
-			<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
-			
-		</div>
-		<div class="navBarGen navBarButton navBarRight">
-			<form class="searchform">
-	     		<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
-	        		placeholder="Quick Search" />
-			</form>
-			<div class="top">
-	 			<button class="searchbtn"></button>
+		<div class="navBarSplit">
+			<div class="navBarInnerDiv">
+				<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
 			</div>
 		</div>
+		<div class="navBarSplit">
+			<div class="navBarInnerDiv navSearchDiv">
+				<form class="searchform">
+	 				<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
+	    		placeholder="Quick Search" />
+				</form>
+				<button class="searchbtn"></button>
+			</div>
+			
+	 		<div class="navBarInnerDiv">
+	 			<button id="userButton" class="footerA" onclick="userLogin()"></button>
+	 		</div>
+
+	 		<div class="navBarInnerDiv">
+	 			<button id="cartButton" class="footerA" onclick="showCart()"></button>
+	 		</div>
+ 		</div>
 	</div>
-	<div class="topAlertDiv"><p>FREE DELIVERY ON ORDERS $50.00+</p><p><button>Shop Now!</button></p></div>
+	
 	<div id="contactDivID"></div>
 
 
 	<div class="content">
-		<div class="searchBox">
-			<input type="text" class="inputBox" id="inputBox" placeholder="What alcoholic beverages are you shopping for?" />
-			<button class="searchButton" id="searchButton" />
+		<div class="topAlertDiv"><p>FREE DELIVERY ON ORDERS $50.00+</p><p><button>Shop Now!</button></p></div>
+		<div class="searchDiv">
+			<div class="searchBox">
+				<input type="text" class="inputBox" id="inputBox" placeholder="What alcoholic beverages are you shopping for?" />
+				<button class="searchButton" id="searchButton" />
+			</div>
 		</div>
+		
 
 		<div class="adSlotDiv"></div>
+
 
 		<div class="anchor" id="discoverAnchor"></div>
 		<div id="discoverDiv" class="discoverDiv">
@@ -293,7 +297,6 @@
 		</div>
 	</div> <!-- End of Content -->
 
-	<div class="backgroundSpacing"></div>
 
 	<div id="footer" class="footer footerTop">
 		<p>&copy; 2020, Dynamic Developers</p>

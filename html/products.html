@@ -20,17 +20,6 @@
 <!-- *******************STYLING start ******************* -->
 <style>
 
-	/* Pre-existing styling */
-	html, body {
-		background: none;
-		background-color: #404040;
-	}
-
-	.navBar {
-		background-color: #404040;
-		z-index: 2;
-		
-	}
 
 	/* Pre-existing styling */
 	.footerTop {
@@ -43,18 +32,21 @@
 		opacity: 1;
 	}
 
-	/* Pre-existing styling */
-	.content {
-		height: 1000px;
-		background-color: #404040;
-		width: 100% !important;
+	.signDiv {
+		height: 100px;
+		width: 400px;
+		background: url(../imgs/products_imgs/topshelf/sign.png) no-repeat center center;
+		background-size: 100%;
+		position: absolute;
+		top: -15px;
+		left: -15px;
 	}
+
 
 	.scrollingProductDiv {
 		min-width: 1100px;
-		max-width: 99vw;
+		width: 100%
 		min-height: 600px;
-		max-height: 600px;
 		background: url(../imgs/products_imgs/scroll_background.png) no-repeat center center;
 		background-size: 100% 100%;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -64,7 +56,7 @@
 	}
 
 	.scrollingProductDivLeft {
-		width: 30vw;
+		width: 30%;
 		height: 600px;
 		position: relative;
 	}
@@ -90,7 +82,7 @@
 	}
 
 	.scrollingProductDivRight {
-		width: 70vw;
+		width: 70%;
 		height: 600px;
 		display: flex;
 		position: relative;
@@ -185,6 +177,7 @@
 		margin-right: 10px;
 		padding-left: 10px;
 		background-color: gainsboro;
+		border-right: 1px solid #404040;
 	}
 
 	.productTableFilterDiv {
@@ -293,11 +286,11 @@
 
 	.productTableRow {
 		height: 500px;
-		width: 80vw;
+		width: 80%;
 		min-width: 1000px;
 		display: flex;
 		position: relative;
-		border-bottom: 1px solid grey;
+		border-top: 1px solid grey;
 	}
 
 	.productTableRowLiner {
@@ -364,21 +357,29 @@
 
  <!-- DO NOT CHANGE -->
  <body> 
-	<div id="topAnchor"></div>
 	<div class="navBar" id="navBarId">
-		<div id="navBarLeft" class="navBarGen navBarImg navBarLeft">
-			<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
-			
-		</div>
-		<div class="navBarGen navBarButton navBarRight">
-			<form class="searchform">
-	     		<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
-	        		placeholder="Quick Search" />
-			</form>
-			<div class="top">
-	 			<button class="searchbtn"></button>
+		<div class="navBarSplit">
+			<div class="navBarInnerDiv">
+				<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
 			</div>
 		</div>
+		<div class="navBarSplit">
+			<div class="navBarInnerDiv navSearchDiv">
+				<form class="searchform">
+	 				<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
+	    		placeholder="Quick Search" />
+				</form>
+				<button class="searchbtn"></button>
+			</div>
+			
+	 		<div class="navBarInnerDiv">
+	 			<button id="userButton" class="footerA" onclick="userLogin()"></button>
+	 		</div>
+
+	 		<div class="navBarInnerDiv">
+	 			<button id="cartButton" class="footerA" onclick="showCart()"></button>
+	 		</div>
+ 		</div>
 	</div>
 	<div id="contactDivID"></div>
  <!-- DO NOT CHANGE -->
@@ -389,9 +390,10 @@
 
 	<!-- *******************HTML start ******************* -->
 	<div class="content">
+		<div class="signDiv"></div>
 		<div class="scrollingProductDiv">
 			<div class="scrollingProductDivLeft">
-				<div class="scrollingProductDivLeftInner"><p>Top Shelf</p></div>
+				<div class="scrollingProductDivLeftInner"><p></p></div>
 			</div>
 			<!-- -->
 			<div class="scrollingProductDivRight">
