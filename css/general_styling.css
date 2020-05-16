@@ -10,23 +10,43 @@
 	}
 
 	body {
-		width: 95% !important;
+		width: 99% !important;
 		min-width: 1200px;
-		background-color: #404040;
-		margin: 2.5%;
-		margin-top: 80px;
-
-
+		background-color: gainsboro;
+		margin: .5%;
+		margin-top: 70px;
 		
 	}
 
-	.content {
+	.homeLinkDiv {
+		position: fixed;
+		top: 0;
+		left: 50%;
+		margin-left: -75px;
+		right: 0;
 		background-color: transparent;
+		width: 150px;
+		height: 50px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 3;
+	}
+
+	.homeLinkDiv a {
+		background-color: transparent;
+		padding-top: 50px;
+		padding-left: 150px;
+		position: relative;
+	}
+
+	.content {
+		background-color: gainsboro;
   		position: relative;
   		right: 0;
   		top: 0;
   		left: 0;
-  		border: 1px solid transparent;
+  		border: 1px solid gainsboro;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
 		margin-bottom: 300px;
 	}
@@ -36,26 +56,37 @@
 		left: 0;
 		right: 0;
 		width: 100%;
-		height: 50px;
+		height: 55px;
 		display: flex;
 		justify-content: space-between;
 		position: fixed;
-		background-color: #404040;
+		background: url(../imgs/navIcons/ddlogo.png) no-repeat center center;
+		background-size: 150px 50px;
+		background-color: gainsboro;
 		z-index: 2;
-		border-bottom: 1px solid #404040;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
-		opacity: .75;
+		opacity: .95;
 	}
 
-	.navBarSplit {
-		width: 50%;
+	.navBarLeftSplit {
+		width: 500px;
+		position: absolute;
+		left: 0;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.navBarRightSplit {
+		width: 500px;
+		position: absolute;
+		right: 0;
 		display: flex;
 		justify-content: space-between;
 	}
 
 	.navBarScrolled {
 		transition: 1s;
-		background-color: #404040;
+		background-color: gainsboro;
 	}
 
 	.navBarInnerDiv {
@@ -71,7 +102,7 @@
 		background-color: transparent;
 		border: none;
 		padding-top: 40px;
-		margin-left: 50px;
+		margin-left: 75px;
 	}
 
 	#menubarButton:focus, #menubarButton:active {
@@ -86,14 +117,13 @@
 		background-color: transparent;
 		padding: 5px;
 		position: relative;
-		margin-left: 200px;
 	}
 
 	#userButton, #userButton:focus {
 		width: 40px;
 		height: 40px;
 		background: url(../imgs/navIcons/user.png) no-repeat center center;
-		background-size: 30px 30px;
+		background-size: 35px 35px;
 		background-color: transparent;
 		border: none;
 		text-decoration: none;
@@ -118,19 +148,51 @@
 		cursor: pointer;
 	}
 
-	.dropDownMenu {
+	.cartDisplayCreate {
 		position: fixed;
-		margin-top: 50px;
-		left: 55px;
-		width: 115px;
-		background-color: white;
-		border: 1px solid #DAA520;
-		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-		padding: 10px;
+		right: 0;
+		top: 55px;
+		bottom: 0;
+		z-index: 2;
+		height: 100%;
+		background-color: gainsboro;
+		opacity: .95;
+		width: 0;
+		transition: width .5s;
+	}
+
+	.cartDisplayHiding {
+		width: 0;
+		
+	}
+
+	.cartDisplayShowing {
+		width: 350px;
+		
+	}
+
+	.menuBarCreate {
+		position: fixed;
+		left: 0;
+		top: 55px;
+		width: 0;
+		height: 400px;
+		background-color: gainsboro;
+		border-top: none;
 		border-radius: 3px;
 		opacity: 1 !important;
 		text-align: right;
-		display: inline-block;
+		z-index: 2;
+		opacity: .95 !important;
+		transition: width .5s;
+	}
+
+	.menuBarHiding {
+		width: 0;
+	}
+
+	.menuBarShowing {
+		width: 200px;
 	}
 
 	.navItem {
@@ -286,7 +348,7 @@
 	}
 
 	.searchbtn{
-		background: url(../imgs/navIcons/spyglass.png) no-repeat center center;
+		background: url(../imgs/navIcons/spyglass_black.png) no-repeat center center;
 		background-size: 25px 25px;
 		border: none;
 		border-radius: 8px;
@@ -335,7 +397,7 @@
 
 
 	.footer {
-		color: white;
+		color: black;
 		min-width: 1000px;
 		position: fixed;
 		left: 0;
@@ -360,9 +422,9 @@
 
 	.footerScroll {
 		transition: 1s;
-		background-color: #404040;
+		background-color: lightgrey;
 		opacity: .5;
-		color: gainsboro;
+		color: black;
 		display: flex;
 		width: 100vw;
 	}
@@ -373,8 +435,8 @@
 		display: block;
 		font-size: 15px;
 		height: 200px;
-		background-color: #404040;
-		color: gainsboro !important;
+		background-color: lightgrey;
+		color: black !important;
 		transition: 1s;
 		width: 100vw;
 	}
@@ -383,7 +445,7 @@
 
 	.footerA {
 	    display: inline-block;
-	    color: gainsboro;
+	    color: black;
 	    text-decoration: none;
 	    font-weight: bold;
 	}
@@ -410,7 +472,7 @@
 	.footerBotTopDiv {
 		padding: 20px;
 		width: 97.5%;
-		background-color: #404040;
+		background-color: gainsboro;
 		display: flex;
 		position: absolute;
 		bottom: 40px;
@@ -477,7 +539,7 @@
 		text-align: center;
 		bottom: 30px;
 		position: absolute;
-		background-color: #404040;
+		background-color: gainsboro;
 		border-top: 1px solid grey;
 	}
 
@@ -485,7 +547,7 @@
 		padding: 5px;
 		width: 100%;
 		text-align: center;
-		background-color: #404040;
+		background-color: gainsboro;
 		bottom: 0;
 		position: absolute;
 		border-top: 1px solid grey;

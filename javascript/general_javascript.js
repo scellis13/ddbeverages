@@ -9,10 +9,12 @@ $( document ).ready(function() {
 
 window.onscroll = function() {
 	setHeaderLayout();
+
 }
 
 window.onload = function() {
 	createHeaderNavBar();
+
 }
 
 /* Changes the layout of the NavBar and Footer based on scroll position */
@@ -53,9 +55,10 @@ function writeFooterBot(){
 				"<div class=\"childDiv\"><h2>Navigate</h2>"+
 					"<table class=\"footerTable\"><tr>" + 
 						"<th><a class=\"footerA\" href=\"index.html#\">Home &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Login &#9656;</a></th></tr><tr>" +
-						"<th><a class=\"footerA\" href=\"index.html#discoverAnchor\">Discover &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Register &#9656;</a></th></tr><tr>" +
+						"<th><a class=\"footerA\" href=\"products.html\">Shop Now &#9656;</a></th><th><a class=\"footerA\" href=\"#\">Register &#9656;</a></th></tr><tr>" +
+						"<th><a class=\"footerA\" href=\"index.html#discoverAnchor\">How It Works &#9656;</a></th><th><a class=\"footerA\" onclick=\"showContactDiv()\">Contact Us &#9656;</a></th></tr><tr>" +
 						"<th><a class=\"footerA\" href=\"#\">FAQ &#9656;</a></th></tr><tr>" +
-						"<th><a class=\"footerA\" href=\"products.html\">Shop Now &#9656;</a></th><th><a class=\"footerA\" onclick=\"showContactDiv()\">Contact Us &#9656;</a></th></tr><tr>" +
+						
 					"</tr></table>" +
 				"</div>" + 
 			"</div>" +
@@ -64,33 +67,39 @@ function writeFooterBot(){
 }
 
 
-var menuShowing = false;
 
 function menuAction(){
-	if(menuShowing){
-		document.getElementById("navBarLeft").innerHTML = ""+ 
-			"<button onclick=\"menuAction()\" class=\"footerA\" id=\"menubarButton\"></button>";
-		menuShowing = false;
+	
+	var ele = document.getElementById("menuBar");
+
+	if (ele.classList.contains("menuBarHiding")) {
+		ele.classList.add("menuBarShowing");
+		ele.classList.remove("menuBarHiding");
 	} else {
-		document.getElementById("navBarLeft").innerHTML = ""+ 
-			"<button onclick=\"menuAction()\" class=\"footerA\" id=\"menubarButton\"></button>" +
-			"<div class=\"arrow-up\"></div>" +
-			"<div onmouseleave=\"menuAction()\" class=\"dropDownMenu\">" +
-			
+		ele.classList.add("menuBarHiding");
+		ele.classList.remove("menuBarShowing");
+	}  
+	/*
+			"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"index.html#\">Home &#9656;</a></p>" +
+			"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"index.html#discoverAnchor\">Discover &#9656;</a></p>" +
+			"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"products.html\">Shop Now &#9656;</a></p>" +
+			"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"#\">FAQ &#9656;</a></p>" +
+			"<p class=\"navItem\"><a class=\"footerA navItemColor\" onclick=\"showContactDiv()\">Contact Us &#9656;</a></p>" +
+	*/
+}
 
 
-				"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"index.html#\">Home &#9656;</a></p>" +
-				"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"index.html#discoverAnchor\">Discover &#9656;</a></p>" +
-				"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"products.html\">Shop Now &#9656;</a></p>" +
-				"<p class=\"navItem\"><a class=\"footerA navItemColor\" href=\"#\">FAQ &#9656;</a></p>" +
-				"<p class=\"navItem\"><a class=\"footerA navItemColor\" onclick=\"showContactDiv()\">Contact Us &#9656;</a></p>" +
+function showCart(){
+	var ele = document.getElementById("cartDisplayDiv");
 
-
-			"</div>" +
-
-		"";
-		menuShowing = true;
-	}
+	if (ele.classList.contains("cartDisplayHiding")) {
+		ele.classList.add("cartDisplayShowing");
+		ele.classList.remove("cartDisplayHiding");
+	} else {
+		ele.classList.add("cartDisplayHiding");
+		ele.classList.remove("cartDisplayShowing");
+	}  
+	
 	
 }
 

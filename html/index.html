@@ -23,6 +23,7 @@
 		opacity: .97.5;
 		width: 100%;
 		padding-top: 10px;
+		padding-bottom: 10px;
 	}
 
 	.topAlertDiv > p {
@@ -35,25 +36,26 @@
 		margin-top: 10px;
 	}
 
-	.topAlertDiv button {
+	.topAlertDiv a, a:visited {
 		background-color: transparent;
 		border: 1px solid white;
 		padding: 10px;
 		font-size: 20px;
 		text-decoration: none;
-		margin-bottom: 10px;
+		color: black;
 	}
 
-	.topAlertDiv button:hover {
+	.topAlertDiv a:hover {
 		border: 1px solid black;
+		color: white;
 	}
 
-	.topAlertDiv button:active {
+	.topAlertDiv a:active {
 		opacity: .9;
 		text-decoration: none;
 	}
 
-	.topAlertDiv button:focus {
+	.topAlertDiv a:focus {
 		opacity: .9;
 		text-decoration: none;
 	}
@@ -226,13 +228,14 @@
 
 
 <body>
+	<div class="homeLinkDiv"><a href="index.html"></a></div>
 	<div class="navBar" id="navBarId">
-		<div class="navBarSplit">
+		<div class="navBarLeftSplit">
 			<div class="navBarInnerDiv">
 				<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
 			</div>
 		</div>
-		<div class="navBarSplit">
+		<div class="navBarRightSplit">
 			<div class="navBarInnerDiv navSearchDiv">
 				<form class="searchform">
 	 				<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
@@ -250,12 +253,13 @@
 	 		</div>
  		</div>
 	</div>
-	
+	<div id="menuBar" class="menuBarCreate menuBarHiding"></div>
+	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding"></div>
 	<div id="contactDivID"></div>
 
 
 	<div class="content">
-		<div class="topAlertDiv"><p>FREE DELIVERY ON ORDERS $50.00+</p><p><button>Shop Now!</button></p></div>
+		<div class="topAlertDiv"><p>FREE DELIVERY ON ORDERS $50.00+</p><p><a href="products.html">Shop Now!</a></p></div>
 		<div class="searchDiv">
 			<div class="searchBox">
 				<input type="text" class="inputBox" id="inputBox" placeholder="What alcoholic beverages are you shopping for?" />

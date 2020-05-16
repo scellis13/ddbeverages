@@ -51,8 +51,8 @@
 		background-size: 100% 100%;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
 		display: flex;
-		border-top: 1px solid #404040;
-		border-bottom: 1px solid #404040;
+		border-top: 1px solid transparent;
+		border-bottom: 1px solid transparent;
 	}
 
 	.scrollingProductDivLeft {
@@ -214,8 +214,11 @@
 		padding: 5px 0 5px 25px;
 		width: 150px;
 		border-radius: 3px;
-		background: url(../imgs/navIcons/spyglass.png) no-repeat center left;
+		background: url(../imgs/navIcons/spyglass_black.png) no-repeat center left;
+		background-color: white;
 		background-size: 15px 15px;
+		color: black;
+		opacity: .65;
 		
 	}
 
@@ -273,6 +276,7 @@
 		padding: 0;
 		background-color: gainsboro;
 		display: inline-block;
+		width: 100%;
 	}
 
 	.productTableTopRow {
@@ -286,7 +290,7 @@
 
 	.productTableRow {
 		height: 500px;
-		width: 80%;
+		width: 100%;
 		min-width: 1000px;
 		display: flex;
 		position: relative;
@@ -357,13 +361,14 @@
 
  <!-- DO NOT CHANGE -->
  <body> 
+	<div class="homeLinkDiv"><a href="index.html"></a></div>
 	<div class="navBar" id="navBarId">
-		<div class="navBarSplit">
+		<div class="navBarLeftSplit">
 			<div class="navBarInnerDiv">
 				<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
 			</div>
 		</div>
-		<div class="navBarSplit">
+		<div class="navBarRightSplit">
 			<div class="navBarInnerDiv navSearchDiv">
 				<form class="searchform">
 	 				<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
@@ -381,6 +386,8 @@
 	 		</div>
  		</div>
 	</div>
+	<div id="menuBar" class="menuBarCreate menuBarHiding"></div>
+	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding"></div>
 	<div id="contactDivID"></div>
  <!-- DO NOT CHANGE -->
 
