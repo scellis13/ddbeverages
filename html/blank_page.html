@@ -6,87 +6,70 @@
 		Blank Page
 	</title>
 
-		<!-- ADD External Sheets Here -->
 		<link rel="stylesheet" 
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script type="text/javascript" src="../javascript/general_javascript.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="../css/general_styling.css" />
-		<!-- END of External Sheets -->
 
 </head>
 
-<!-- *******************STYLING start ******************* -->
 <style>
 
-	.content {
-		padding-top: 150px;
-		height: 1000px;
-	}
-
-	body {
-		background: none !important;
-	}
-
-
-</style>
-<!-- *******************STYLING end ******************* -->
-
-
-
- <!-- DO NOT CHANGE -->
- <body> 
-	<div id="topAnchor"></div>
-	<div class="navBar" id="navBarId">
-		<div id="navBarLeft" class="navBarGen navBarImg navBarLeft">
-			<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
-			
-		</div>
-		<div class="navBarGen navBarButton navBarRight">
-			<form class="searchform">
-	     		<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
-	        		placeholder="Quick Search" />
-			</form>
-			<div class="top">
-	 			<button class="searchbtn"></button>
-			</div>
-		</div>
-	</div>
-	<div id="contactDivID"></div>
- <!-- DO NOT CHANGE -->
-
-
-
-
-
-	<!-- *******************HTML start ******************* -->
-	<div class="content">
 	
 
+</style>
 
 
+<body>
+<!-- Do Not Change Below -- >
+	<div class="homeLinkDiv"><a href="index.html"></a></div>
+	<div class="navBar" id="navBarId">
+		<div class="navBarLeftSplit">
+			<div class="navBarInnerDiv">
+				<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
+			</div>
+		</div>
+		<div class="navBarRightSplit">
+			<div class="navBarInnerDiv navSearchDiv">
+				<form class="searchform">
+	 				<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
+	    		placeholder="Quick Search" />
+				</form>
+				<button class="searchbtn"></button>
+			</div>
+			
+	 		<div class="navBarInnerDiv">
+	 			<button id="userButton" class="footerA" onclick="userLogin()"></button>
+	 		</div>
 
+	 		<div class="navBarInnerDiv">
+	 			<button id="cartButton" class="footerA" onclick="showCart()"></button>
+	 		</div>
+ 		</div>
 	</div>
-	<!-- *******************HTML end ******************* -->
+	<div id="menuBar" class="menuBarCreate menuBarHiding"></div>
+	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding"></div>
+	<div id="contactDivID"></div>
+<!--^^^ Do Not Change Above ^^^-->
+
+	<div class="content"> 
+<!-- Start of Content -->
+		
+	</div> 
+<!-- End of Content -->
 
 
-
- <!-- DO NOT CHANGE -->
-	<div class="backgroundSpacing"></div>
 	<div id="footer" class="footer footerTop">
 		<p>&copy; 2020, Dynamic Developers</p>
 	</div>
 </body>
- <!-- DO NOT CHANGE -->
 
 
+<script>
 
+	
 
-<!-- *******************SCRIPTING start - Personal Page ******************* -->
-<script> 
-
-
-</script>  
-<!-- *******************SCRIPTING end - Personal Page ******************* -->
+</script>
 </html>
