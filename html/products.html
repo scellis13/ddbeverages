@@ -380,6 +380,99 @@
 		opacity: 1;
 	}
 
+	.dropDownInfoDiv {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 3; /* Sit on top */
+		padding-top: 100px; /* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+
+	}
+
+	.dropDownInfoDiv-content {
+		/* Modal Content */
+			background-color: gainsboro;
+			opacity: .975;
+			margin: auto;
+			padding: 20px;
+			width: 600px;
+			height: 400px;
+			display: flex;
+			position: relative;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			border-radius: 6px;
+	}
+
+	/* The Close Button */
+	.close {
+	  color: #aaaaaa;
+	  float: right;
+	  font-size: 28px;
+	  font-weight: bold;
+	}
+
+	.close:hover,
+	.close:focus {
+	  color: #000;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+
+
+		#dropDownInfo_image {
+			height: 400px;
+			width: 250px;
+			background: url(../imgs/products_imgs/topshelf/lagavulin.png) no-repeat center center;
+			background-size: 200px 400px;
+		}
+
+		.dropDownInfoRightContainer {
+			width: 350px;
+			height: 100%;
+			position: relative;
+			font-family: Arial;
+
+		}
+
+			#dropDownInfo_title {
+				height: 80px;
+				width: 100%;
+				text-align: center;
+				overflow: hidden;
+				font-size: 35px;
+				overflow: hidden;
+			}
+
+			#dropDownInfo_description {
+				padding: 5px;
+				height: 260px;
+				width: 340px;
+				overflow-x: hidden;
+				overflow-y: auto;
+			}
+
+			#dropDownInfo_proof {
+				position: absolute;
+				left: 5px;
+				bottom: 0;
+				text-align: left;
+				font-size: 20px;
+			}
+
+			#dropDownInfo_price {
+				position: absolute;
+				right: 0;
+				text-align: right;
+				font-size: 35px;
+				bottom: 0;
+			}
+
 
 
 </style>
@@ -518,7 +611,22 @@
 	<div id="contactDivID"></div>
  <!-- DO NOT CHANGE -->
 
+ 	<!-- The Modal -->
+	<div id="dropDownInfoDiv" class="dropDownInfoDiv">
 
+	  <!-- Modal content -->
+	  <div class="dropDownInfoDiv-content">
+			<div id="dropDownInfo_image"></div>
+			<div class="dropDownInfoRightContainer">
+				<div id="dropDownInfo_title">Product Title</div>
+				<div id="dropDownInfo_description">Entire description of the product will go here.</div>
+				<div id="dropDownInfo_proof">0.00% ALC./VOL.</div>
+				<div id="dropDownInfo_price">$00.00</div>
+			</div>
+			
+	  </div>
+
+	</div>
 
 
 
@@ -569,51 +677,6 @@
 			<div class="productTableRowContainer">
 				<div class="productTableTopRow">
 					&#9656; Found 0 Search Results with: ""
-				</div>
-				<div class="productTableRow">
-					<div class="productTableRowLiner"></div>
-					<div class="card">
-						<a class="infoIcon" onclick="productInfo()"></a>
-						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-						<h2>Eagle Rare</h2>
-						<p class="price">$50.00</p>
-						<p><button>Add to Cart</button></p>
-					</div>
-					<div class="card">
-						<a class="infoIcon" onclick="productInfo()"></a>
-						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-						<h2>Eagle Rare</h2>
-						<p class="price">$50.00</p>
-						<p><button>Add to Cart</button></p>
-					</div>
-					<div class="card">
-						<a class="infoIcon" onclick="productInfo()"></a>
-						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-						<h2>Eagle Rare</h2>
-						<p class="price">$50.00</p>
-						<p><button>Add to Cart</button></p>
-					</div>
-					<div class="card">
-						<a class="infoIcon" onclick="productInfo()"></a>
-						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-						<h2>Eagle Rare</h2>
-						<p class="price">$50.00</p>
-						<p><button>Add to Cart</button></p>
-					</div>
-					<div class="card">
-						<a class="infoIcon" onclick="productInfo()"></a>
-						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-						<h2>Eagle Rare</h2>
-						<p class="price">$50.00</p>
-						<p><button>Add to Cart</button></p>
-					</div>
-					<div class="card">
-						<a class="infoIcon" onclick="productInfo()"></a>
-						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
-						<h2>Eagle Rare</h2>
-						<p class="price">$50.00</p>
-						<p><button>Add to Cart</button></p>
-					</div>
 				</div>
 				<div class="productTableRow">
 					<div class="productTableRowLiner"></div>
@@ -807,6 +870,47 @@ function setPrimaryFilterFunctions(){
 
 
 
+var dropDownInfoDiv = document.getElementById("dropDownInfoDiv");
+
+function setDropDownInfoDiv(picture, title, description, proof, price){
+	var imgElement = document.getElementById("dropDownInfo_image");
+	var titleElement = document.getElementById("dropDownInfo_title");
+	var descriptionElement = document.getElementById("dropDownInfo_description");
+	var proofElement = document.getElementById("dropDownInfo_proof");
+	var priceElement = document.getElementById("dropDownInfo_price");
+
+	imgElement.style.background = "url(" + picture + ") no-repeat center center";
+	imgElement.style.backgroundSize = "200px 400px";
+	titleElement.style.content = title;
+	descriptionElement.style.content = description;
+	proofElement.style.content = proof;
+	priceElement.style.content = "$" + price;
+
+}
+
+function productInfo(){
+	showDropDownInfoDiv();
+}
+
+function showDropDownInfoDiv(){
+	dropDownInfoDiv.style.display = "block";
+}
+
+function hideDropDownInfoDiv(){
+	dropDownInfoDiv.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function() {
+  if (event.target == dropDownInfoDiv) {
+    dropDownInfoDiv.style.display = "none";
+  }
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  dropDownInfoDiv.style.display = "none";
+}
 
 </script>  
 <!-- *******************SCRIPTING end - Personal Page ******************* -->
