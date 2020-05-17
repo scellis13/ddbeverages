@@ -17,7 +17,18 @@
 
 <style>
 
-	
+	#cartButton, #cartButton:focus {
+		width: 50px;
+		height: 40px;
+		background: url(../imgs/navIcons/cart_empty.png) no-repeat center center;
+		background-size: 40px 40px;
+		background-color: transparent;
+		border: none;
+		text-decoration: none;
+		outline: none;
+		padding-top: 40px;
+		margin-right: 50px;
+	}
 
 </style>
 
@@ -49,7 +60,20 @@
  		</div>
 	</div>
 	<div id="menuBar" class="menuBarCreate menuBarHiding"></div>
-	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding"></div>
+	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding">
+		
+		<div id="cartTopLabelDiv">
+			<p id="cartLabel">CART</p>
+			<p id="cartTotalItems">Total Items: 0</p>
+			<p id="cartTotalPrice">TOTAL: $0.00</p>
+		</div>
+		<div id="cartInnerDivScrollable" class="cartInnerDivScrollable">
+			
+		</div>
+		<hr id="cartHR">
+		<button onclick="processCheckout()" id="cartDisplayCheckout" class="footerA">CHECK OUT</button>
+
+	</div>
 	<div id="contactDivID"></div>
 
 
