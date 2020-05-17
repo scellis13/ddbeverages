@@ -32,21 +32,11 @@
 		opacity: 1;
 	}
 
-	.signDiv {
-		height: 100px;
-		width: 400px;
-		background: url(../imgs/products_imgs/topshelf/sign.png) no-repeat center center;
-		background-size: 100%;
-		position: absolute;
-		top: -15px;
-		left: -15px;
-	}
-
 
 	.scrollingProductDiv {
 		min-width: 1100px;
 		width: 100%
-		min-height: 600px;
+		min-height: 350px;
 		background: url(../imgs/products_imgs/scroll_background.png) no-repeat center center;
 		background-size: 100% 100%;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -57,7 +47,7 @@
 
 	.scrollingProductDivLeft {
 		width: 30%;
-		height: 600px;
+		height: 350px;
 		position: relative;
 	}
 
@@ -83,7 +73,7 @@
 
 	.scrollingProductDivRight {
 		width: 70%;
-		height: 600px;
+		height: 350px;
 		display: flex;
 		position: relative;
 
@@ -111,7 +101,7 @@
 		padding: 5px;
 		border-radius: 5px;
 		position: absolute;
-		top: 250px;
+		top: 200px;
 	}
 
 	.arrows:hover {
@@ -123,7 +113,7 @@
 	.productDisplayDivContainer {
 		display: block;
 		width: 30%;
-		height: 600px;
+		height: 350px;
 		margin: 0;
 		opacity: 1;
 	}
@@ -137,20 +127,19 @@
 	/* Product Images should be 200x400*/
 	.productDisplayDiv {
 		width: 100%;
-		height: 400px;
+		height: 200px;
 		margin-top: 75px;
-		min-width: 200px;
-
+		min-width: 100px;
 	}
 
 	.productDisplayLabelDiv {
-		max-height: 100px;
+		max-height: 50px;
 		width: 80%;
 		min-width: 200px;
 		margin-top: 10px;
 		text-align: center;
 		font-family: "Brush Script MT";
-		font-size: 28px;
+		font-size: 22px;
 		text-overflow: ellipsis;
 		overflow-wrap: normal;
 		text-shadow: 1px 1px black;
@@ -365,7 +354,8 @@
 	<div class="navBar" id="navBarId">
 		<div class="navBarLeftSplit">
 			<div class="navBarInnerDiv">
-				<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
+				<a href="products.html" class="footerA navLink" id="shopNav">SHOP</a>
+				<a onclick="showContactDiv()" class="footerA navLink" id="shopNav">CONTACT US</a>
 			</div>
 		</div>
 		<div class="navBarRightSplit">
@@ -386,7 +376,6 @@
 	 		</div>
  		</div>
 	</div>
-	<div id="menuBar" class="menuBarCreate menuBarHiding"></div>
 	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding">
 		
 		<div id="cartTopLabelDiv">
@@ -495,10 +484,9 @@
 
 	<!-- *******************HTML start ******************* -->
 	<div class="content">
-		<div class="signDiv"></div>
 		<div class="scrollingProductDiv">
 			<div class="scrollingProductDivLeft">
-				<div class="scrollingProductDivLeftInner"><p></p></div>
+				<div class="scrollingProductDivLeftInner"><p>Top Shelf</p></div>
 			</div>
 			<!-- -->
 			<div class="scrollingProductDivRight">
@@ -695,12 +683,15 @@ function setProductPicture(direction){
 	switch (direction) {
 		case 'left':
 			document.getElementById("leftProductDisplayDiv").style.background = "url(" + leftScrollProduct[1] + ") no-repeat center center";
+			document.getElementById("leftProductDisplayDiv").style.backgroundSize = "100px 200px";
 			break;
 		case 'center':
 			document.getElementById("centerProductDisplayDiv").style.background = "url(" + centerScrollProduct[1] + ") no-repeat center center";
+			document.getElementById("centerProductDisplayDiv").style.backgroundSize = "100px 200px";
 			break;
 		case 'right':
 			document.getElementById("rightProductDisplayDiv").style.background = "url(" + rightScrollProduct[1] + ") no-repeat center center";
+			document.getElementById("rightProductDisplayDiv").style.backgroundSize = "100px 200px";
 			break;
 	}
 }

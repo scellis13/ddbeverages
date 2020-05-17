@@ -103,6 +103,11 @@ function showCart(){
 	
 }
 
+function processCheckout(){
+	//if checkout is ever empty, create message.
+	window.location.href = 'payment.html';
+}
+
 /* Contact Form Functions */
 var contactDivShowing = false;
 

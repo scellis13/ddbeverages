@@ -17,29 +17,37 @@
 
 <style>
 
+	.footerTop {
+		color: gainsboro !important;
+	}
+
+	.footerScroll {
+		color: black !important;
+	}
+
 
 	.topAlertDiv {
 		background-color: #DAA520;
 		opacity: .97.5;
 		width: 100%;
 		padding-top: 10px;
-		padding-bottom: 20px;
+		padding-bottom: 10px;
 	}
 
 	.topAlertDiv > p {
 		font-family: Arial;
 		width: 100%;
-		font-size: 24px;
+		font-size: 20px;
 		text-align: center;
 		color: black;
 		margin: 0;
-		margin-top: 10px;
+		padding: 5px;
 	}
 
 	.topAlertDiv a, a:visited {
 		background-color: transparent;
 		border: 1px solid white;
-		padding: 10px;
+		padding: 5px;
 		font-size: 20px;
 		text-decoration: none;
 		color: black;
@@ -60,13 +68,20 @@
 		text-decoration: none;
 	}
 
-	
+	.deliveryAdDiv {
+		width: 100%;
+		height: 600px;
+		background: url(../imgs/delivery_ad.png) no-repeat center center fixed;
+		background-size: 1000px 500px;
+		background-color: black;
+	}
 
 	.searchDiv {
 		width: 100%;
 		background: url(../imgs/index_top3.PNG) no-repeat center center fixed;
-		background-size: 100% 100%;
-		height: 800px;
+		background-size: 100%;
+		background-color: black;
+		height: 700px;
 		position: relative;
 
 
@@ -132,10 +147,45 @@
 
 	.adSlotDiv {
 		width: 100%;
-		height: 750px;
-		background: url(../imgs/index_top.png) no-repeat center center fixed;
-		background-size: 100%;
+		height: 600px;
+		display: flex;
+		position: relative;
+		background-color: black;
+	}
 
+	.adSlotImg {
+		width: 800px;
+		height: 600px;
+		background: url(../imgs/index_top.png) no-repeat center left;
+		background-size: 800px 400px;
+		margin-left: 100px;
+	}
+
+	.adSlotInfo {
+		width: 300px;
+		margin-top: 150px;
+		margin-left: 25px;
+		color: gainsboro;
+		font-size: 40px;
+		text-align: center;
+		line-height: 150%;
+	}
+
+	#adSlotButton, #adSlotButton:focus {
+		background-color: transparent;
+		border: 1px solid #DAA520;
+		color: gainsboro;
+		padding: 10px;
+		margin-top: 25px;
+		text-decoration: none;
+		outline: none;
+	}
+
+	#adSlotButton:hover {
+		background-color: gainsboro;
+		color: black;
+		cursor: pointer;
+		font-weight: bold;
 	}
 
 	.discoverDiv {
@@ -158,10 +208,10 @@
 		color: black;
 	  font-size: 40px;
 	  padding: 8px 12px;
-	  margin-left: 37.5%;
+	  margin-left: 25%;
 	  margin-top: -80px;
 	  margin-bottom: 15px;
-	  max-width: 25%;
+	  width: 50%;
 	  text-align: center;
 	  z-index: 1;
 	  background-color: white;
@@ -232,7 +282,8 @@
 	<div class="navBar" id="navBarId">
 		<div class="navBarLeftSplit">
 			<div class="navBarInnerDiv">
-				<button onclick="menuAction()" class="footerA" id="menubarButton"></button>
+				<a href="products.html" class="footerA navLink" id="shopNav">SHOP</a>
+				<a onclick="showContactDiv()" class="footerA navLink" id="shopNav">CONTACT US</a>
 			</div>
 		</div>
 		<div class="navBarRightSplit">
@@ -253,7 +304,6 @@
 	 		</div>
  		</div>
 	</div>
-	<div id="menuBar" class="menuBarCreate menuBarHiding"></div>
 	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding">
 		
 		<div id="cartTopLabelDiv">
@@ -357,20 +407,14 @@
 
 	<div class="content">
 		<div class="topAlertDiv"><p>FREE DELIVERY ON ORDERS $50.00+</p><p><a href="products.html">Shop Now!</a></p></div>
-		<div class="searchDiv">
-			<div class="searchBox">
-				<input type="text" class="inputBox" id="inputBox" placeholder="What alcoholic beverages are you shopping for?" />
-				<button class="searchButton" id="searchButton" />
-			</div>
-		</div>
-		
+		<div class="deliveryAdDiv"></div>
 
-		<div class="adSlotDiv"></div>
+		<div class="adSlotDiv"><div class="adSlotImg"></div><div class="adSlotInfo">Browse Our Fine Collection of <br>Ménage à Trois!<br><button id="adSlotButton" onclick="productSearchValue('Menage a Trois')">SHOP Ménage à Trois</button></div></div>
 
 
 		<div class="anchor" id="discoverAnchor"></div>
 		<div id="discoverDiv" class="discoverDiv">
-			<h1>DISCOVER</h1>
+			<h1>HOW OUR SERVICES WORK</h1>
 			<h3><i>Delivering Beverages To The East Valley</i></h3><br><br>
 			<div class="discoverFlexDiv">
 				<div class="discoverContentInsideDiv">
@@ -396,6 +440,20 @@
 				</div>
 			</div>
 		</div>
+
+
+		<div class="searchDiv">
+			<div class="searchBox">
+				<input type="text" class="inputBox" id="inputBox" placeholder="What alcoholic beverages are you shopping for?" />
+				<button class="searchButton" id="searchButton" />
+			</div>
+		</div>
+		
+
+		
+
+
+		
 	</div> <!-- End of Content -->
 
 

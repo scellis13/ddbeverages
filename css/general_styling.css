@@ -72,6 +72,7 @@
 		width: 500px;
 		position: absolute;
 		left: 0;
+		bottom: 0;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -91,18 +92,11 @@
 
 	.navBarInnerDiv {
 		padding: 10px 0 10px 0;
-
 	}
 
-	#menubarButton {
-		width: 60px;
-		height: 40px;
-		background: url(../imgs/navIcons/menubar.png) no-repeat center center;
-		background-size: 25px 25px;
-		background-color: transparent;
+	.navLink {
 		border: none;
-		padding-top: 40px;
-		margin-left: 75px;
+		margin-left: 50px;
 	}
 
 	#menubarButton:focus, #menubarButton:active {
@@ -332,7 +326,17 @@
 				padding: 0;
 			}
 
-			#itemQuantity button, button:focus {
+			#itemQuantity button {
+				font-size: 15px;
+				height: 30px;
+				width: 30px;
+				background-color: transparent;
+				border: none;
+				outline: none;
+
+			}
+
+			#itemQuantity button:focus {
 				font-size: 15px;
 				height: 30px;
 				width: 30px;
