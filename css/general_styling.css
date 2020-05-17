@@ -171,6 +171,212 @@
 		
 	}
 
+	#cartHRTop {
+		width: 100%;
+		position: absolute;
+		top: 50px;
+		opacity: .5;
+	}
+
+	#cartTopLabelDiv {
+		font-size: 24px;
+		position: relative;
+		top: 0;
+		width: 100%;
+		height: 55px;
+		border-top: 1px solid gainsboro;
+		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
+	}
+		#cartTopLabelDiv p {
+			margin: 0;
+		}
+
+		#cartLabel {
+			font-size: 24px;
+			font-weight: bold;
+			position: absolute;
+			width: 100%;
+			text-align: left;
+			top: 5px;
+			left: 10px;
+		}
+
+		
+
+		#cartTotalItems {
+			font-size: 14px;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 50%;
+			text-align: left;
+		}
+
+		#cartTotalPrice {
+			font-size: 18px;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 50%;
+			text-align: right;
+		}
+
+
+	.cartInnerDivScrollable {
+		width: 100%;
+		overflow-y: auto;
+		overflow-x: hidden;
+		background-color: transparent;
+		position: absolute;
+		top: 65px;
+		bottom: 150px;
+	}
+
+	.cartItemContainer {
+		height: 125px;
+		width: 100%;
+		margin-bottom: 25px;
+		display: flex;
+		position: relative;
+	}
+
+		#cartItemDelete {
+			background-color: transparent;
+			border: none;
+			position: absolute;
+			top: 0;
+			right: 5px;
+			font-size: 18px;
+			color: black;
+			opacity: .5;
+		}
+
+		#cartItemDelete:hover {
+			opacity: 1;
+			cursor: pointer;
+		}
+
+		.cartItemInfo {
+			background-color: transparent;
+			font-size: 15px;
+			font-family: Arial;
+			width: 200px;
+			height: 100px;
+			text-align: center;
+			margin-left: 10px;
+			margin-top: 25px;
+			overflow: hidden;
+			position: relative;
+		}
+
+			.cartItemPicture {
+				height: 125px;
+				width: 100px;
+				background: rgba(0, 0, 0, 0.4);
+				margin-left: 10px;
+				text-align: center;
+			}
+
+			.cartItemPicture img {
+				width: 75px;
+				height: 125px;
+				border: none;
+			}
+
+			#itemTitle {
+				font-size: 20px;
+				height: 60px;
+				width: 100%;
+				margin: 0;
+				position: absolute;
+				top: 0;
+				text-align: center;
+				  overflow-y: auto;
+			}
+
+			#itemPrice {
+				font-size: 18px;
+				border-bottom: .5px solid #DAA520;
+				position: absolute;
+				margin: 0;
+				bottom: 5px;
+				right: 10px;
+				width: 40%;
+				overflow:hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+
+			#itemQuantity {
+				position: absolute;
+				margin: 0;
+				padding: 0;
+				bottom: 0;
+				left: 0;
+				font-weight: bold;
+				font-size: 15px;
+				width: 60%;
+			}
+
+			#itemQuantity input[type="text"] {
+				font-size: 15px;
+				height: 30px;
+				width: 30px;
+				background-color: gainsboro;
+				border: .5px solid #DAA520;
+				outline: none;
+				text-align: center;
+				margin:0;
+				padding: 0;
+			}
+
+			#itemQuantity button, button:focus {
+				font-size: 15px;
+				height: 30px;
+				width: 30px;
+				background-color: transparent;
+				border: none;
+				outline: none;
+
+			}
+
+			#itemQuantity button:hover {
+				background-color: lightgrey;
+			}
+
+			#itemQuantity button:active {
+				opacity: .5;
+			}
+
+		
+
+
+	#cartHR {
+		width: 100%;
+		position: absolute;
+		bottom: 135px;
+		opacity: .5;
+	}
+
+	#cartDisplayCheckout, #cartDisplayCheckout:active {
+		width: 300px;
+		position: absolute;
+		bottom: 75px;
+		left: 25px;
+		border: none;
+		outline: none;
+		height: 50px;
+		font-size: 26px;
+		font-family: Arial;
+		font-weight: bold;
+		background-color: #DAA520;
+		border-radius: 3px;
+	}
+
+	#cartDisplayCheckout:hover {
+		opacity: .75;
+	}
+
 	.menuBarCreate {
 		position: fixed;
 		left: 0;

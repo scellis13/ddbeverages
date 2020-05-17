@@ -23,7 +23,7 @@
 		opacity: .97.5;
 		width: 100%;
 		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-bottom: 20px;
 	}
 
 	.topAlertDiv > p {
@@ -83,7 +83,7 @@
 		padding: 25px;
 		display: flex;
 		position: absolute;
-		top: 45%;
+		top: 35%;
 	}
 
 	.searchBox > input {
@@ -254,7 +254,104 @@
  		</div>
 	</div>
 	<div id="menuBar" class="menuBarCreate menuBarHiding"></div>
-	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding"></div>
+	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding">
+		
+		<div id="cartTopLabelDiv">
+			<p id="cartLabel">CART</p>
+			<p id="cartTotalItems">Total Items: 5</p>
+			<p id="cartTotalPrice">TOTAL: $1000.00</p>
+		</div>
+		<div id="cartInnerDivScrollable" class="cartInnerDivScrollable">
+			
+			<div class="cartItemContainer">
+				<button id="cartItemDelete">x</button>
+				<div class="cartItemPicture">
+					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
+				</div>
+				<div class="cartItemInfo">
+					<p id="itemTitle">
+						Lagavulin
+					</p>
+					<p id="itemQuantity">
+						<button id="minusQuantity">-</button> 
+						<input id="quantityInput" type="text" value="0"></input> 
+						<button id="addQuantity">+</button> 
+					</p>
+					<p id="itemPrice">$123.00</p>
+				</div>
+			</div>
+			<div class="cartItemContainer">
+				<button id="cartItemDelete">x</button>
+				<div class="cartItemPicture">
+					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
+				</div>
+				<div class="cartItemInfo">
+					<p id="itemTitle">
+						Lagavulin
+					</p>
+					<p id="itemQuantity">
+						<button id="minusQuantity">-</button> 
+						<input id="quantityInput" type="text" value="0"></input> 
+						<button id="addQuantity">+</button> 
+					</p>
+					<p id="itemPrice">$123.00</p>
+				</div>
+			</div>
+			<div class="cartItemContainer">
+				<button id="cartItemDelete">x</button>
+				<div class="cartItemPicture">
+					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
+				</div>
+				<div class="cartItemInfo">
+					<p id="itemTitle">
+						Lagavulin
+					</p>
+					<p id="itemQuantity">
+						<button id="minusQuantity">-</button> 
+						<input id="quantityInput" type="text" value="0"></input> 
+						<button id="addQuantity">+</button> 
+					</p>
+					<p id="itemPrice">$123.00</p>
+				</div>
+			</div>
+			<div class="cartItemContainer">
+				<button id="cartItemDelete">x</button>
+				<div class="cartItemPicture">
+					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
+				</div>
+				<div class="cartItemInfo">
+					<p id="itemTitle">
+						Lagavulin
+					</p>
+					<p id="itemQuantity">
+						<button id="minusQuantity">-</button> 
+						<input id="quantityInput" type="text" value="0"></input> 
+						<button id="addQuantity">+</button> 
+					</p>
+					<p id="itemPrice">$123.00</p>
+				</div>
+			</div>
+			<div class="cartItemContainer">
+				<button id="cartItemDelete">x</button>
+				<div class="cartItemPicture">
+					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
+				</div>
+				<div class="cartItemInfo">
+					<p id="itemTitle">
+						Lagavulin
+					</p>
+					<p id="itemQuantity">
+						<button id="minusQuantity">-</button> 
+						<input id="quantityInput" type="text" value="0"></input> 
+						<button id="addQuantity">+</button> 
+					</p>
+					<p id="itemPrice">$123.00</p>
+				</div>
+			</div>
+		</div>
+		<hr id="cartHR">
+		<button onclick="processCheckout()" id="cartDisplayCheckout" class="footerA">CHECK OUT</button>
+	</div>
 	<div id="contactDivID"></div>
 
 
@@ -309,32 +406,10 @@
 
 <script>
 
-	var slideIndex = 1;
-	showSlides(slideIndex);
-
-	function plusSlides(n) {
-	  showSlides(slideIndex += n);
-	}
-
-	function currentSlide(n) {
-	  showSlides(slideIndex = n);
-	}
-
-	function showSlides(n) {
-	  var i;
-	  var slides = document.getElementsByClassName("mySlides");
-	  var dots = document.getElementsByClassName("dot");
-	  if (n > slides.length) {slideIndex = 1}    
-	  if (n < 1) {slideIndex = slides.length}
-	  for (i = 0; i < slides.length; i++) {
-	      slides[i].style.display = "none";  
-	  }
-	  for (i = 0; i < dots.length; i++) {
-	      dots[i].className = dots[i].className.replace(" active", "");
-	  }
-	  slides[slideIndex-1].style.display = "block";  
-	  dots[slideIndex-1].className += " active";
-	}
+function processCheckout(){
+	//if checkout is ever empty, create message.
+	window.location.href = 'payment.html';
+}
 
 </script>
 </html>
