@@ -116,7 +116,10 @@
 		height: 350px;
 		margin: 0;
 		opacity: 1;
+		position: relative;
 	}
+
+	
 
 	.productDisplayDivContainer:hover {
 		border: 0 1px 0 1px solid black;
@@ -308,6 +311,7 @@
 		text-align: center;
 		font-family: arial;
 		z-index: 1;
+		position: relative;
 	}
 
 	.card h2, p {
@@ -339,6 +343,41 @@
 
 	.card button:hover {
 	  opacity: 0.7;
+	}
+
+	.infoIcon {
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 30px;
+		height: 30px;
+		background: url(../imgs/products_imgs/info.png) no-repeat center center;
+		background-size: 20px 20px;
+		opacity: .5;
+		z-index: 2;
+	}
+
+	.infoIcon:hover {
+		cursor: pointer;
+		opacity: 1;
+	}
+
+	.scrollingInfoIcon {
+		position: absolute;
+		display: none;
+		right: 0;
+		bottom: 0;
+		width: 30px;
+		height: 30px;
+		background: url(../imgs/products_imgs/info_white.png) no-repeat center center;
+		background-size: 20px 20px;
+		opacity: .5;
+		z-index: 2;
+	}
+
+	.scrollingInfoIcon:hover {
+		cursor: pointer;
+		opacity: 1;
 	}
 
 
@@ -495,15 +534,18 @@
 				<div class="scrollingProductDivRight_Left arrowDiv"><a class="arrows prev" onclick="">&#10094;</a></div>
 				<div class="scrollingProductDivRight_Center">
 					<div id="leftProductDisplayDivContainer" class="productDisplayDivContainer" onmouseover="showProductLabel('left')" onmouseout="hideProductLabel('left')">
+						<a id="leftInfoLink" class="scrollingInfoIcon" onclick="productInfo()"></a>
 						<div id="leftProductDisplayDiv" class="productDisplayDiv leftProductDisplayDiv"></div>
 						<div id="leftProductDisplayLabel" class="productDisplayLabelDiv"></div>
 					</div>
 					<div id="centerProductDisplayDivContainer" class="productDisplayDivContainer" onmouseover="showProductLabel('center')" onmouseout="hideProductLabel('center')">
+						<a id="centerInfoLink" class="scrollingInfoIcon" onclick="productInfo()"></a>
 						<div id="centerProductDisplayDiv" class="productDisplayDiv centerProductDisplayDiv">
 						</div>
 						<div id="centerProductDisplayLabel" class="productDisplayLabelDiv"></div>
 					</div>
 					<div id="rightProductDisplayDivContainer"class="productDisplayDivContainer" onmouseover="showProductLabel('right')" onmouseout="hideProductLabel('right')">
+						<a id="rightInfoLink" class="scrollingInfoIcon" onclick="productInfo()"></a>
 						<div id="rightProductDisplayDiv" class="productDisplayDiv rightProductDisplayDiv"></div>
 						<div id="rightProductDisplayLabel" class="productDisplayLabelDiv"></div>
 					</div>
@@ -531,36 +573,42 @@
 				<div class="productTableRow">
 					<div class="productTableRowLiner"></div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
@@ -570,36 +618,42 @@
 				<div class="productTableRow">
 					<div class="productTableRowLiner"></div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
 						<p><button>Add to Cart</button></p>
 					</div>
 					<div class="card">
+						<a class="infoIcon" onclick="productInfo()"></a>
 						<img src="../imgs/products_imgs/topshelf/eagle_rare.png" style="width: 100%;" />
 						<h2>Eagle Rare</h2>
 						<p class="price">$50.00</p>
@@ -655,12 +709,15 @@ function showProductLabel(direction){
 	switch (direction) {
 		case 'left':
 			document.getElementById("leftProductDisplayLabel").innerText = leftScrollProduct[0];
+			document.getElementById("leftInfoLink").style.display = "block";
 			break;
 		case 'center':
 			document.getElementById("centerProductDisplayLabel").innerText = centerScrollProduct[0];
+			document.getElementById("centerInfoLink").style.display = "block";
 			break;
 		case 'right':
 			document.getElementById("rightProductDisplayLabel").innerText = rightScrollProduct[0];
+			document.getElementById("rightInfoLink").style.display = "block";
 			break;
 	}
 }
@@ -668,13 +725,17 @@ function showProductLabel(direction){
 function hideProductLabel(direction){
 	switch (direction) {
 		case 'left':
+
 			document.getElementById("leftProductDisplayLabel").innerText = "";
+			document.getElementById("leftInfoLink").style.display = "none";
 			break;
 		case 'center':
 			document.getElementById("centerProductDisplayLabel").innerText = "";
+			document.getElementById("centerInfoLink").style.display = "none";
 			break;
 		case 'right':
 			document.getElementById("rightProductDisplayLabel").innerText = "";
+			document.getElementById("rightInfoLink").style.display = "none";
 			break;
 	}
 	
