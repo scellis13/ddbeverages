@@ -627,6 +627,7 @@
 		8: Top Shelf
 	*/
 
+
 var productArray = [["2","2","Ciroc Ultra-Premium Vodka","../imgs/products_imgs/product_size.png","Ciroc Ultra-Premium Vodka is distilled from exquisite French grapes to create a gluten free taste experience. Distilled five times in the South of France for the ultimate smooth vodka. Ciroc Ultra-Premium Vodka features notes of citrus aromas that are slightly sweet from the enriched grapes.","80","750 ML"," $24.99 ","No","1001"],
 ["2","2","Tito�s Vodka","../imgs/products_imgs/product_size.png","Tito�s Vodka is a corn-based gluten free vodka. The vodka is a unanimous double gold medal winner of the SF World Spirit Championship. Tito�s Vodka pairs well with a variety of recipes and is a top choice for your favorite martini.","80","750 ML"," $16.99 ","No","1002"],
 ["2","3","Captain Morgan Original Spiced Rum","../imgs/products_imgs/product_size.png","'Captain Morgan Original Spiced Rum distilled in Puerto Rico, contains subtle notes of vanilla and caramel giving it a flavorful finish for any rum cocktail. Hints of cinnamon and spice are brought up to spike your taste buds.'","70","750 ML","$12.49 ","No","1003"],
@@ -764,8 +765,7 @@ function addProduct(product){
 			document.getElementById('addQuantity' + productIdData).click();
 		}
 		document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
-		window.localStorage.setItem('hello', 'hi');
-		alert(localStorage.getItem('hello'));
+		
 	}
 }
 

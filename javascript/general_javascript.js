@@ -1,3 +1,5 @@
+
+
 var navSearchBarShowing = true;
 
 $( document ).ready(function() {
