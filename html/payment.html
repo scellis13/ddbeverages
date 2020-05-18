@@ -20,7 +20,7 @@
 	.content {
 		border: none;
 		box-shadow: none;
-		width: 800px;
+		width: 1000px;
 		margin-left: 100px;
 		margin-top: 100px;
 	}
@@ -65,6 +65,237 @@
 		padding-left: 25px;
 	}
 
+	#checkoutContent {
+		width: 100%;
+		height: 300px;
+		font-family: Arial;
+		font-size: 20px;
+		display: flex;
+	}
+
+		#checkoutContent input[type="radio"] {
+			margin: 10px;
+		}
+
+		.checkoutInnerLeft {
+			width: 50%;
+			height: 300px;
+			position: relative;
+			text-align: left;
+		}
+
+		.checkoutInnerRight {
+			width: 50%;
+			height: 300px;
+			position: relative;
+			text-align: left;
+		}
+
+		form {
+			margin: 20px 0 20px 0;
+		}
+			.labelDiv {
+				width: 100%;
+				display: flex;
+			}
+			.inputLabel {
+				font-size: 18px;
+				padding: 0;
+				color: brown;
+				width: 50%;
+				text-align: left;
+			}
+
+			.inputField {
+				margin: 0;
+				padding: 10px;
+				width: 40%;
+			}
+
+			.inputField:focus {
+				outline: none;
+				border: 1px solid #DAA520;
+			}
+
+			.bottomDiv {
+				position: absolute;
+				bottom: 5px;
+			}
+
+			.checkoutButtons, .checkoutButtons:focus {
+				background-color: transparent;
+				border: 1px solid #DAA520;
+				padding: 10px;
+				min-width: 200px;
+				color: black;
+				font-size: 18px;
+				margin: 0;
+				font-weight: bold;
+				outline: none;
+				margin-right: 10px;
+			}
+
+			.checkoutButtons:hover {
+				background-color: white;
+				color: #DAA520;
+				cursor: pointer;
+			}
+
+			#checkoutLoginDiv {
+				display: block;
+			}
+
+				#usernameLabel {
+					font-weight: bold;
+					color: brown;
+				}
+
+			#checkoutMemberDiv {
+				display: none;
+				width: 100%;
+				margin-top: 75px;
+			}
+
+	#mailingContent {
+		width: 100%;
+		height: 325px;
+		font-family: Arial;
+		font-size: 20px;
+		display: none;
+		text-align: left;
+		position: relative;
+	}
+
+		.addressRowContainer {
+			width: 75%;
+			height: 250px;
+		}
+
+		.addressRowContainer > p {
+			margin: 0;
+		}
+
+		.addressRow {
+			width: 100%;
+			height: 50px;
+			margin: 5px 0 30px 0;
+			display: flex;
+			justify-content: space-between;
+		}
+
+			.addressElementHalfContainer {
+				height: 100%;
+				width: 50%;
+				font-family: Arial;
+				border: 1px solid gainsboro;
+				padding-left: 5px;
+				margin-right: 10px;
+				
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+				background-color: white;
+			}
+
+			.addressElementThirdContainer {
+				height: 100%;
+				width: 30%;
+				font-family: Arial;
+				border: 1px solid gainsboro;
+				padding-left: 5px;
+				margin-right: 10px;
+				
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+				background-color: white;
+
+			}
+
+			.addressElementContainer:focus-within {
+				border: 1px solid #DAA520;
+			}
+
+				.addressElementLabel {
+					font-size: 15px;
+					width: 100%;
+					height: 15px;
+					opacity: .5;
+				}
+
+				.addressElementField, .addressElementField:focus {
+					font-size: 20px;
+					width: 100%;
+					height: 30px;
+					border: none;
+					outline: none;
+					background-color: transparent;
+				}
+
+	#billingContent {
+		width: 100%;
+		height: 325px;
+		font-family: Arial;
+		font-size: 20px;
+		display: none;
+		text-align: left;
+		position: relative;
+	}
+
+	#paymentContent {
+		width: 100%;
+		height: 325px;
+		font-family: Arial;
+		font-size: 20px;
+		display: none;
+		text-align: left;
+		position: relative;
+	}
+		.paymentRow {
+			width: 75%;
+			height: 50px;
+			margin: 5px 0 30px 0;
+			display: flex;
+			align-items: center;
+		}
+
+		.paymentRow > input {
+			margin: 0 20px 0 15px;
+		}
+
+		.paymentElementFullContainer {
+			height: 100%;
+			width: 100%;
+			font-family: Arial;
+			border: 1px solid gainsboro;
+			padding-left: 5px;
+			margin-right: 10px;
+			
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			background-color: white;
+
+		}
+
+		.paymentElementHalfContainer {
+			height: 100%;
+			width: 50%;
+			font-family: Arial;
+			border: 1px solid gainsboro;
+			padding-left: 5px;
+			margin-right: 10px;
+			
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			background-color: white;
+		}
+
+		.paymentElementContainer:focus-within {
+			border: 1px solid #DAA520;
+		}
+
+	#orderReviewContent {
+		width: 100%;
+		height: 300px;
+		font-family: Arial;
+		font-size: 20px;
+		display: none;
+	}
+
 </style>
 
 
@@ -96,7 +327,7 @@
 	<div class="content">
 
 		<h1>CHECKOUT</h1>
-		<div class="labelDivContainer">
+		<div class="labelDivContainer" onclick="displaySection(1)">
 			<div class="labelNumberDiv">
 				<p>1</p>
 			</div>
@@ -105,18 +336,103 @@
 			</div>
 		</div>
 
+			<div id="checkoutContent">
+				<div class="checkoutInnerLeft">
+					<b>Check out as a Guest or Register</b>
+					<br>
+					<i style="font-size: 18px; color: red;">Register with us for future convenience</i>
+					<br>
+					<form id="checkoutForm"><input name="radioChoice" type="radio" value="guest" id="guestRadioButton">Check out as a Guest
+					<input name="radioChoice" type="radio" value="register" id="registerRadioButton">Register</form>
+					
+					<b style="font-size: 18px;">Register and save time on your next purchase!</b>
+					<ul><li>Fast and easy check out!</li><li>Easy access to your order history and status.</li></ul>
+					<div class="bottomDiv">
+						<button onclick="continueCheckout(2)" class="checkoutButtons">CONTINUE CHECKOUT</button>
+						<button onclick="returnShopping()" class="checkoutButtons">CONTINUE SHOPPING</button>
+					</div>
+				</div>
+				<div class="checkoutInnerRight">
+					<b>Member Login</b>
+					
+					<div id="checkoutMemberDiv">
+						Hello Sean!
+						<br><br>
+						&ensp;&ensp;Currently logged in and checking out with username: <div id="usernameLabel"></div>
+						<div class="bottomDiv">
+							<button onclick="checkoutLogout()" id="logoutButton" class="checkoutButtons">LOG OUT</button>
+						</div>
+					</div>
+					<div id="checkoutLoginDiv" class="bottomDiv">
+						Already a member?
+						<form id="loginForm">
+							<div class="labelDiv">
+								<label class="inputLabel" for="loginUsername_checkout">Username</label>
+								<label class="inputLabel" for="loginPassword_checkout">Password</label>
+							</div>
+							<input class="inputField" type="text" name="loginUsername_checkout" id="loginUsername_checkout" placeholder="Username/Email">
+							<input class="inputField" type="password" name="loginPassword_checkout" id="loginPassword_checkout" placeholder="Password">
+						</form>
+						<br><br>
+						<button id="loginButton" onclick="checkoutLogin()" class="checkoutButtons">LOGIN</button>
+						<a href="#" class="footerA" style="font-size: 14px;">Forgot your password?</a>
+					</div>
+				</div>
+			</div>
 
-		<div class="labelDivContainer">
+		<div class="labelDivContainer" onclick="displaySection(2)">
 			<div class="labelNumberDiv">
 				<p>2</p>
 			</div>
 			<div class="labelTitleDiv">
-				<p>SHIPPING INFORMATION</p>
+				<p>SHIPPING ADDRESS INFORMATION</p>
 			</div>
 		</div>
 
+			<div id="mailingContent">
+				<div class="addressRowContainer">
+					<p>Fields marked with * are mandatory</p>
+					<div class="addressRow">
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">First Name *</div>
+							<input placeholder="First Name" type="text" class="addressElementField" id="mailingInfo_firstName" required>
+						</div>
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">Last Name *</div>
+							<input placeholder="Last Name" type="text" class="addressElementField" id="mailingInfo_lastName" required>
+						</div>
+					</div>
+					<div class="addressRow">
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">Full Street Address (include Apt / Box #)*</div>
+							<input type="text" class="addressElementField" id="mailingInfo_streetAddress" placeholder="Full Street Address"required>
+						</div>
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">Town / City *</div>
+							<input  placeholder="City"type="text" class="addressElementField" id="mailingInfo_city" required>
+						</div>
+					</div>
+					<div class="addressRow">
+						<div class="addressElementContainer addressElementThirdContainer">
+							<div class="addressElementLabel">Postal / Zipcode *</div>
+							<input type="text" class="addressElementField" id="mailingInfo_postalCode" placeholder="Zipcode" required>
+						</div>
+						<div class="addressElementContainer addressElementThirdContainer">
+							<div class="addressElementLabel">State *</div>
+							<input type="text" class="addressElementField" id="mailingInfo_state" placeholder="State" required>
+						</div>
+						<div class="addressElementContainer addressElementThirdContainer">
+							<div class="addressElementLabel">Country *</div>
+							<input type="text" class="addressElementField" id="mailingInfo_country" placeholder="Country" required>
+						</div>
+					</div>
+				</div>
+				<div class="bottomDiv">
+					<button onclick="continueCheckout(3)" class="checkoutButtons">CONTINUE CHECKOUT</button>
+				</div>
+			</div>
 
-		<div class="labelDivContainer">
+		<div class="labelDivContainer" onclick="displaySection(3)">
 			<div class="labelNumberDiv">
 				<p>3</p>
 			</div>
@@ -126,17 +442,94 @@
 		</div>
 
 
-		<div class="labelDivContainer">
+			<div id="paymentContent">
+				<div class="addressRowContainer">
+					<p>Choose Your Payment Type:</p>
+					<div class="paymentRow">
+						<input type="radio" id="creditCardButton" name="paymentType" value="creditCardPayment" checked>
+							<img alt="Credit Card Logos" title="Credit Card Logos" src="http://www.credit-card-logos.com/images/visa_credit-card-logos/visa_logo_2.gif" width="65" height="40" border="0" />
+							<img alt="Credit Card Logos" title="Credit Card Logos" src="http://www.credit-card-logos.com/images/mastercard_credit-card-logos/mastercard_logo_4.gif" width="65" height="40" border="0" />
+							<img alt="Credit Card Logos" title="Credit Card Logos" src="http://www.credit-card-logos.com/images/discover_credit-card-logos/discover_network2.jpg" width="65" height="40" border="0" />
+					</div>
+					<div class="paymentRow">
+						<div class="paymentElementContainer paymentElementFullContainer">
+							<div class="addressElementLabel">Card Number</div>
+							<input type="text" class="addressElementField" id="paymentInfo_cardNumber" placeholder="" required>
+						</div>
+					</div>
+					<div class="paymentRow">
+						<div class="paymentElementContainer paymentElementHalfContainer">
+							<div class="addressElementLabel">Expiration Date <text style="color: grey; font-size: 12px;">(MM/YY)</text></div>
+							<input type="text" class="addressElementField" id="paymentInfo_expirationDate" placeholder="" maxlength="5" required>
+						</div>
+						<div class="paymentElementContainer paymentElementHalfContainer">
+							<div class="addressElementLabel">CVV <text style="color: grey; font-size: 12px;"> 3 Digits</text></div>
+							<input type="password" class="addressElementField" id="paymentInfo_cvv" placeholder="" maxlength="3" required>
+						</div>
+					</div>
+				</div>
+				<div class="bottomDiv">
+					<button onclick="continueCheckout(4)" class="checkoutButtons">CONTINUE CHECKOUT</button>
+				</div>
+			</div>
+
+
+		<div class="labelDivContainer" onclick="displaySection(4)">
 			<div class="labelNumberDiv">
 				<p>4</p>
 			</div>
 			<div class="labelTitleDiv">
-				<p>BILLING INFORMATION</p>
+				<p>BILLING ADDRESS INFORMATION</p>
 			</div>
 		</div>
 
 
-		<div class="labelDivContainer">
+			<div id="billingContent">
+				<div class="addressRowContainer">
+					<p>Fields marked with * are mandatory</p>
+					<input type="checkbox" id="sameAddressCheckbox" onclick="fillBilling()" name="sameAddressCheckbox"><text style="font-size: 12px; color: red; font-weight: bold;">Use Shipping Address for Billing Information</text>
+					<div class="addressRow">
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">First Name *</div>
+							<input placeholder="First Name" type="text" class="addressElementField" id="mailingInfo_firstName" required>
+						</div>
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">Last Name *</div>
+							<input placeholder="Last Name" type="text" class="addressElementField" id="mailingInfo_lastName" required>
+						</div>
+					</div>
+					<div class="addressRow">
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">Billing Street Address (include Apt / Box #)*</div>
+							<input type="text" class="addressElementField" id="mailingInfo_streetAddress" placeholder="Billing Street Address"required>
+						</div>
+						<div class="addressElementContainer addressElementHalfContainer">
+							<div class="addressElementLabel">Town / City *</div>
+							<input  placeholder="City"type="text" class="addressElementField" id="mailingInfo_city" required>
+						</div>
+					</div>
+					<div class="addressRow">
+						<div class="addressElementContainer addressElementThirdContainer">
+							<div class="addressElementLabel">Postal / Zipcode *</div>
+							<input type="text" class="addressElementField" id="mailingInfo_postalCode" placeholder="Zipcode" required>
+						</div>
+						<div class="addressElementContainer addressElementThirdContainer">
+							<div class="addressElementLabel">State *</div>
+							<input type="text" class="addressElementField" id="mailingInfo_state" placeholder="State" required>
+						</div>
+						<div class="addressElementContainer addressElementThirdContainer">
+							<div class="addressElementLabel">Country *</div>
+							<input type="text" class="addressElementField" id="mailingInfo_country" placeholder="Country" required>
+						</div>
+					</div>
+				</div>
+				<div class="bottomDiv">
+					<button onclick="continueCheckout(5)" class="checkoutButtons">CONTINUE CHECKOUT</button>
+				</div>
+			</div>
+
+
+		<div class="labelDivContainer" onclick="displaySection(5)">
 			<div class="labelNumberDiv">
 				<p>5</p>
 			</div>
@@ -144,16 +537,81 @@
 				<p>ORDER REVIEW</p>
 			</div>
 		</div>
+
+
+			<div id="orderReviewContent">
+				Order Review Information Here
+			</div>
 	</div> <!-- End of Content -->
 
 
-	<div id="footer" class="footer footerTop">
+	<div class="footer footerTop">
 		<p>&copy; 2020, Dynamic Developers</p>
 	</div>
 </body>
 
 <script>
+	function displaySection(section) {
+		document.getElementById("checkoutContent").style.display = "none";
+		document.getElementById("mailingContent").style.display = "none";
+		document.getElementById("billingContent").style.display = "none";
+		document.getElementById("paymentContent").style.display = "none";
+		document.getElementById("orderReviewContent").style.display = "none";
+		switch(section){
+			case 1:
+				document.getElementById("checkoutContent").style.display = "flex";
+				break;
+			case 2:
+				document.getElementById("mailingContent").style.display = "flex";
+				break;
+			case 3:
+				document.getElementById("paymentContent").style.display = "flex";
+				break;
+			case 4:
+				document.getElementById("billingContent").style.display = "flex";
+				break;
+			case 5:
+				document.getElementById("orderReviewContent").style.display = "flex";
+				break;
+		}
+	}
 
+	function continueCheckout(section){
+		switch(section) {
+			case 2:
+				document.getElementById("checkoutContent").style.display = "none";
+				document.getElementById("mailingContent").style.display = "flex";
+				break;
+			case 3:
+				document.getElementById("mailingContent").style.display = "none";
+				document.getElementById("paymentContent").style.display = "flex";
+				break;
+			case 4:
+				document.getElementById("paymentContent").style.display = "none";
+				document.getElementById("billingContent").style.display = "flex";
+				break;
+			case 5:
+				document.getElementById("billingContent").style.display = "none";
+				document.getElementById("orderReviewContent").style.display = "flex";
+				break;
+		}
+	}
+	function returnShopping(){
+		window.location.href = "products.html";
+	}
+
+	function checkoutLogout(){
+		//Log out user and show login display
+		document.getElementById("checkoutMemberDiv").style.display = "none";
+		document.getElementById("checkoutLoginDiv").style.display = "block";
+	}
+
+	function checkoutLogin(){
+		//Login user, place items in database cart
+		document.getElementById("usernameLabel").innerText = "scelis13";
+		document.getElementById("checkoutLoginDiv").style.display = "none";
+		document.getElementById("checkoutMemberDiv").style.display = "block";
+	}
 
 </script>
 </html>
