@@ -70,7 +70,7 @@
 
 	.deliveryAdDiv {
 		width: 100%;
-		height: 600px;
+		height: 75vh;
 		background: url(../imgs/delivery_ad.png) no-repeat center center;
 		background-size: 1000px 600px;
 		background-color: black;
@@ -81,7 +81,7 @@
 		background: url(../imgs/index_top3.PNG) no-repeat center center fixed;
 		background-size: 100%;
 		background-color: black;
-		height: 700px;
+		height: 90vh;
 		position: relative;
 
 
@@ -147,7 +147,7 @@
 
 	.adSlotDiv {
 		width: 100%;
-		height: 600px;
+		height: 100vh;
 		display: flex;
 		position: relative;
 		
@@ -165,7 +165,7 @@
 
 	.adSlotInfo {
 		width: 300px;
-		margin-top: 150px;
+		margin-top: 200px;
 		margin-left: 25px;
 		color: gainsboro;
 		font-size: 40px;
@@ -312,99 +312,16 @@
 		
 		<div id="cartTopLabelDiv">
 			<p id="cartLabel">CART</p>
-			<p id="cartTotalItems">Total Items: 5</p>
-			<p id="cartTotalPrice">TOTAL: $1000.00</p>
+			<p id="cartTotalItems">Total Items: <text id="cartTotalItemsNum">0</text></p>
+			<p id="cartTotalPrice">TOTAL: $<text id="cartTotalPriceNum">00.00</text></p>
 		</div>
 		<div id="cartInnerDivScrollable" class="cartInnerDivScrollable">
 			
-			<div class="cartItemContainer">
-				<button id="cartItemDelete">x</button>
-				<div class="cartItemPicture">
-					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
-				</div>
-				<div class="cartItemInfo">
-					<p id="itemTitle">
-						Lagavulin
-					</p>
-					<p id="itemQuantity">
-						<button id="minusQuantity">-</button> 
-						<input id="quantityInput" type="text" value="0"></input> 
-						<button id="addQuantity">+</button> 
-					</p>
-					<p id="itemPrice">$123.00</p>
-				</div>
-			</div>
-			<div class="cartItemContainer">
-				<button id="cartItemDelete">x</button>
-				<div class="cartItemPicture">
-					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
-				</div>
-				<div class="cartItemInfo">
-					<p id="itemTitle">
-						Lagavulin
-					</p>
-					<p id="itemQuantity">
-						<button id="minusQuantity">-</button> 
-						<input id="quantityInput" type="text" value="0"></input> 
-						<button id="addQuantity">+</button> 
-					</p>
-					<p id="itemPrice">$123.00</p>
-				</div>
-			</div>
-			<div class="cartItemContainer">
-				<button id="cartItemDelete">x</button>
-				<div class="cartItemPicture">
-					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
-				</div>
-				<div class="cartItemInfo">
-					<p id="itemTitle">
-						Lagavulin
-					</p>
-					<p id="itemQuantity">
-						<button id="minusQuantity">-</button> 
-						<input id="quantityInput" type="text" value="0"></input> 
-						<button id="addQuantity">+</button> 
-					</p>
-					<p id="itemPrice">$123.00</p>
-				</div>
-			</div>
-			<div class="cartItemContainer">
-				<button id="cartItemDelete">x</button>
-				<div class="cartItemPicture">
-					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
-				</div>
-				<div class="cartItemInfo">
-					<p id="itemTitle">
-						Lagavulin
-					</p>
-					<p id="itemQuantity">
-						<button id="minusQuantity">-</button> 
-						<input id="quantityInput" type="text" value="0"></input> 
-						<button id="addQuantity">+</button> 
-					</p>
-					<p id="itemPrice">$123.00</p>
-				</div>
-			</div>
-			<div class="cartItemContainer">
-				<button id="cartItemDelete">x</button>
-				<div class="cartItemPicture">
-					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
-				</div>
-				<div class="cartItemInfo">
-					<p id="itemTitle">
-						Lagavulin
-					</p>
-					<p id="itemQuantity">
-						<button id="minusQuantity">-</button> 
-						<input id="quantityInput" type="text" value="0"></input> 
-						<button id="addQuantity">+</button> 
-					</p>
-					<p id="itemPrice">$123.00</p>
-				</div>
-			</div>
+			
 		</div>
 		<hr id="cartHR">
 		<button onclick="processCheckout()" id="cartDisplayCheckout" class="footerA">CHECK OUT</button>
+		
 	</div>
 	<div id="contactDivID"></div>
 
