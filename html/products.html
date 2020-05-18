@@ -310,7 +310,7 @@
 		margin: auto;
 		text-align: center;
 		font-family: arial;
-		z-index: 1;
+		z-index: 0;
 		position: relative;
 
 	}
@@ -481,7 +481,6 @@
 <!-- *******************STYLING end ******************* -->
 
 
-
  <!-- DO NOT CHANGE -->
  <body> 
 	<div class="homeLinkDiv"><a href="index.html"></a></div>
@@ -604,8 +603,6 @@
 	</div>
 	<!-- *******************HTML end ******************* -->
 
-
-
  <!-- DO NOT CHANGE -->
 	<div id="footer" class="footer footerTop">
 		<p>&copy; 2020, Dynamic Developers</p>
@@ -671,6 +668,7 @@ var rowsShowing = 0;
 var maxProductsPerRow = 6;
 var totalCartItems = 0;
 var cartProducts = [];
+
 
 for(var i = 0; i < productArray.length; i++){
 	addProduct(productArray[i]);
@@ -759,11 +757,15 @@ function addProduct(product){
 			
 			cartProducts.push(productIdData);
 			totalCartItems++;
+
+
 			
 		} else {
 			document.getElementById('addQuantity' + productIdData).click();
 		}
 		document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
+		window.localStorage.setItem('hello', 'hi');
+		alert(localStorage.getItem('hello'));
 	}
 }
 
@@ -955,10 +957,6 @@ window.onclick = function() {
   }
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  dropDownInfoDiv.style.display = "none";
-}
 
 
 

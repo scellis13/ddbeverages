@@ -12,10 +12,6 @@ window.onscroll = function() {
 
 }
 
-window.onload = function() {
-	createHeaderNavBar();
-
-}
 
 /* Changes the layout of the NavBar and Footer based on scroll position */
 function setHeaderLayout(){
