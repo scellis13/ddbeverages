@@ -25,6 +25,10 @@
 	
 	
 	
+	
+	
+	
+	
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {
@@ -68,6 +72,51 @@
 	
 	
 	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+	
+	
+	
+	
 </head>
 <body>
 
@@ -76,7 +125,17 @@
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type in a keyword or question.." title="Type in a name">
 
 <ul id="myUL">
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>How do I use my promo code?</a></li>
+	
+ <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn"><li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>How do I use my promo code?</a></li></button>
+  <div id="myDropdown" class="dropdown-content">
+    <p>Promo codes can be entered at check-out.</p>
+	</div>
+</div>  
+	  
+	  
+	  
+	  
   <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>How can I track my order?</a></li>
   <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> Is beer or wine safer to drink than liquor?</a></li>
   <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>What health problems are associated with excessive alcohol use?</a></li>
