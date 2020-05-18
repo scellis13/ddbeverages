@@ -515,28 +515,11 @@
 		
 		<div id="cartTopLabelDiv">
 			<p id="cartLabel">CART</p>
-			<p id="cartTotalItems">Total Items: 5</p>
-			<p id="cartTotalPrice">TOTAL: $1000.00</p>
+			<p id="cartTotalItems">Total Items: <text id="cartTotalItemsNum">0</text></p>
+			<p id="cartTotalPrice">TOTAL: $<text id="cartTotalPriceNum">00.00</text></p>
 		</div>
 		<div id="cartInnerDivScrollable" class="cartInnerDivScrollable">
 			
-			<div class="cartItemContainer">
-				<button id="cartItemDelete">x</button>
-				<div class="cartItemPicture">
-					<img src="../imgs/products_imgs/topshelf/lagavulin.png" />
-				</div>
-				<div class="cartItemInfo">
-					<p id="itemTitle">
-						Lagavulin
-					</p>
-					<p id="itemQuantity">
-						<button id="minusQuantity">-</button> 
-						<input id="quantityInput" type="text" value="0"></input> 
-						<button id="addQuantity">+</button> 
-					</p>
-					<p id="itemPrice">$123.00</p>
-				</div>
-			</div>
 			
 		</div>
 		<hr id="cartHR">
@@ -686,6 +669,8 @@ var productArray = [["2","2","Ciroc Ultra-Premium Vodka","../imgs/products_imgs/
 var productsShowing = 0;
 var rowsShowing = 0;
 var maxProductsPerRow = 6;
+var totalCartItems = 0;
+var cartProducts = [];
 
 for(var i = 0; i < productArray.length; i++){
 	addProduct(productArray[i]);
@@ -740,9 +725,73 @@ function addProduct(product){
 	}
 
 	var cartButton = document.getElementById(productIdData+'CartButton');
+	cartButton.onclick = function() {
 
+		var divString = "" + 
+		"<div id=\"cartItemContainer"+productIdData+"\" class=\"cartItemContainer\">" + 
+				"<button onclick=\"removeProduct("+productIdData+")\" id=\"cartItemDelete\">x</button>" + 
+				"<div class=\"cartItemPicture\">" + 
+					"<img src=\""+imgData+"\" />" + 
+				"</div>" + 
+				"<div class=\"cartItemInfo\">" + 
+					"<p id=\"itemTitle\">" + 
+						titleData + 
+					"</p>" + 
+					"<p id=\"itemQuantity\">" + 
+						"<button onclick='minusQuantity("+productIdData+")' id=\"minusQuantity"+productIdData+"\">-</button>" +  
+						"<input id=\"quantityInput"+productIdData+"\" type=\"text\" value=\"1\"></input>" + 
+						"<button onclick='addQuantity("+productIdData+")' id=\"addQuantity"+productIdData+"\">+</button>" + 
+					"</p>" + 
+					"<p class=\"itemPrice\" id=\"itemPrice"+productIdData+"\">"+priceData+"</p>" + 
+				"</div>" + 
+			"</div>";
+
+		var cartContainers = document.getElementsByClassName('cartItemContainer');
+
+		//Add product id to cartProduct Array
+		if(!cartProducts.includes(productIdData)){
+			if(cartProducts.length === 0){
+				var div = document.getElementById("cartInnerDivScrollable");
+				div.innerHTML = divString;
+			} else {
+				$ ( divString ).insertAfter(cartContainers[cartProducts.length -1]);
+			}
+			
+			cartProducts.push(productIdData);
+			totalCartItems++;
+			
+		} else {
+			document.getElementById('addQuantity' + productIdData).click();
+		}
+		document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
+	}
 }
 
+
+function addQuantity(id){
+	document.getElementById('quantityInput'+id).value++;
+	totalCartItems++;
+	document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
+}
+
+function minusQuantity(id){
+	if(document.getElementById('quantityInput'+id).value > 1){
+		document.getElementById('quantityInput'+id).value--;
+		totalCartItems--;
+		document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
+	}
+	
+}
+
+function removeProduct(id){
+	var amount = document.getElementById('quantityInput'+id).value;
+	totalCartItems = totalCartItems - amount;
+	var index = cartProducts.indexOf(id.toString());
+	if (index !== -1) cartProducts.splice(index, 1);
+	document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
+	document.getElementById("cartItemContainer"+id).remove();
+	
+}
 
 var topShelfProductArray = [];
 var leftScrollProduct = [];

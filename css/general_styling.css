@@ -290,7 +290,7 @@
 				  overflow-y: auto;
 			}
 
-			#itemPrice {
+			.itemPrice {
 				font-size: 18px;
 				border-bottom: .5px solid #DAA520;
 				position: absolute;
