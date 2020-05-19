@@ -884,10 +884,11 @@ var centerScrollProduct = [];
 var rightScrollProduct = [];
 
 function createTopShelfArray(){
-	var eagle_rare = ["Eagle Rare 10 Year Bourbon", "../imgs/products_imgs/topshelf/eagle_rare.png"];
-	var blantons_original = ["Blanton's Original Single Barrel", "../imgs/products_imgs/topshelf/blantons_original.png"];
-	var lagavulin = ["Lagavulin 16 Year", "../imgs/products_imgs/topshelf/lagavulin.png"];
-	topShelfProductArray.push(eagle_rare, blantons_original, lagavulin);
+	for(var i = 0; i < productArray.length; i++){
+		if(productArray[i][8].toLowerCase()==="yes"){
+			topShelfProductArray.push(productArray[i]);
+		}
+	}
 	leftScrollProduct = topShelfProductArray[0];
 	centerScrollProduct = topShelfProductArray[1];
 	rightScrollProduct = topShelfProductArray[2];
@@ -905,16 +906,28 @@ function showProductLabel(direction){
 	
 	switch (direction) {
 		case 'left':
-			document.getElementById("leftProductDisplayLabel").innerText = leftScrollProduct[0];
+			document.getElementById("leftProductDisplayLabel").innerText = leftScrollProduct[2];
 			document.getElementById("leftInfoLink").style.display = "block";
+			$("#leftInfoLink").click(function() {
+		    	setDropDownInfoDiv(leftScrollProduct[3], leftScrollProduct[2], leftScrollProduct[4], leftScrollProduct[5], leftScrollProduct[7]);
+		    	showDropDownInfoDiv();
+		    });
 			break;
 		case 'center':
-			document.getElementById("centerProductDisplayLabel").innerText = centerScrollProduct[0];
+			document.getElementById("centerProductDisplayLabel").innerText = centerScrollProduct[2];
 			document.getElementById("centerInfoLink").style.display = "block";
+			$("#centerInfoLink").click(function() {
+		    	setDropDownInfoDiv(centerScrollProduct[3], centerScrollProduct[2], centerScrollProduct[4], centerScrollProduct[5], centerScrollProduct[7]);
+		    	showDropDownInfoDiv();
+		    });
 			break;
 		case 'right':
-			document.getElementById("rightProductDisplayLabel").innerText = rightScrollProduct[0];
+			document.getElementById("rightProductDisplayLabel").innerText = rightScrollProduct[2];
 			document.getElementById("rightInfoLink").style.display = "block";
+			$("#rightInfoLink").click(function() {
+		    	setDropDownInfoDiv(rightScrollProduct[3], rightScrollProduct[2], rightScrollProduct[4], rightScrollProduct[5], rightScrollProduct[7]);
+		    	showDropDownInfoDiv();
+		    });
 			break;
 	}
 }
@@ -922,7 +935,6 @@ function showProductLabel(direction){
 function hideProductLabel(direction){
 	switch (direction) {
 		case 'left':
-
 			document.getElementById("leftProductDisplayLabel").innerText = "";
 			document.getElementById("leftInfoLink").style.display = "none";
 			break;
@@ -938,17 +950,29 @@ function hideProductLabel(direction){
 }
 
 function setProductPicture(direction){
+	/* Product array elements
+		0: Primary Category ID
+		1: Sub Category ID
+		2: Product Title
+		3: Image URL
+		4: Description
+		5: Proof
+		6: Size
+		7: Price
+		8: Top Shelf
+		9: Product ID
+	*/
 	switch (direction) {
 		case 'left':
-			document.getElementById("leftProductDisplayDiv").style.background = "url(" + leftScrollProduct[1] + ") no-repeat center center";
+			document.getElementById("leftProductDisplayDiv").style.background = "url(" + leftScrollProduct[3] + ") no-repeat center center";
 			document.getElementById("leftProductDisplayDiv").style.backgroundSize = "100px 200px";
 			break;
 		case 'center':
-			document.getElementById("centerProductDisplayDiv").style.background = "url(" + centerScrollProduct[1] + ") no-repeat center center";
+			document.getElementById("centerProductDisplayDiv").style.background = "url(" + centerScrollProduct[3] + ") no-repeat center center";
 			document.getElementById("centerProductDisplayDiv").style.backgroundSize = "100px 200px";
 			break;
 		case 'right':
-			document.getElementById("rightProductDisplayDiv").style.background = "url(" + rightScrollProduct[1] + ") no-repeat center center";
+			document.getElementById("rightProductDisplayDiv").style.background = "url(" + rightScrollProduct[3] + ") no-repeat center center";
 			document.getElementById("rightProductDisplayDiv").style.backgroundSize = "100px 200px";
 			break;
 	}
@@ -1151,11 +1175,13 @@ function filterSearch(queryString){
 		rows[0].parentNode.removeChild(rows[0]);
 	}
 	var searchField = document.getElementById("productFilterSearch");
-	var value = searchField.value;
+	
 
 	if(queryString != null && queryString.length > 0){
-		value = queryString;
+		searchField.value = queryString;
 	}
+
+	var value = searchField.value;
 
  	productsShowing = 0;
  	rowsShowing = 0;

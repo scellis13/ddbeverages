@@ -156,3 +156,7 @@ function navQuickSearch(btn){
 	}
 	
 }
+
+function userLogin(){
+	window.location.href = "login.html";
+}
