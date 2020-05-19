@@ -37,13 +37,59 @@
 		min-width: 1100px;
 		width: 100%
 		min-height: 350px;
+		max-height: 350px;
 		background: url(../imgs/products_imgs/scroll_background.png) no-repeat center center;
 		background-size: 100% 100%;
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
 		display: flex;
 		border-top: 1px solid transparent;
 		border-bottom: 1px solid transparent;
+		position: relative;
 	}
+
+	.hideTopShelfDiv {
+		position: absolute;
+		left: 0px;
+		bottom: -40px;
+		background-color: transparent;
+		display: flex;
+		align-items: center;
+		z-index: 2;
+	}
+
+	.hideTopShelfButton {
+		font-size: 30px;
+		background-color: transparent;
+		outline: none;
+		border: none;
+	}
+
+	.hideTopShelfButton:hover {
+		padding-bottom: 2px;
+		cursor: pointer;
+	}
+
+	#buttonForShowDiv {
+		background-color: transparent;
+		z-index: 2;
+		outline: none;
+		border: none;
+		display: none;
+		align-items: center;
+	}
+
+	.showTopShelfButton {
+		font-size: 30px;
+		background-color: transparent;
+		outline: none;
+		border: none;
+	}
+
+	.showTopShelfButton:hover {
+		padding-top: 2px;
+		cursor: pointer;
+	}
+
 
 	.scrollingProductDivLeft {
 		width: 30%;
@@ -575,7 +621,9 @@
 
 	<!-- *******************HTML start ******************* -->
 	<div class="content">
-		<div class="scrollingProductDiv">
+		<div id="buttonForShowDiv"><button class="showTopShelfButton" onclick="showTopShelf()"> &#10515; </button><p class="btnText">Show Top Shelf</p>
+		</div>
+		<div id="scrollingProductDiv" class="scrollingProductDiv">
 			<div class="scrollingProductDivLeft">
 				<div class="scrollingProductDivLeftInner"><p>Top Shelf</p></div>
 			</div>
@@ -605,6 +653,7 @@
 				<div class="scrollingProductDivRight_Right arrowDiv"><a class="arrows next">&#10095;</a></div>
 
 			</div>
+			<div class="hideTopShelfDiv"><button class="hideTopShelfButton" onclick="hideTopShelf(this)"> &#x2912; </button><p class="btnText">Hide Top Shelf</p></div>
 		</div>
 
 		<div class="productTableContent">
@@ -1195,7 +1244,15 @@ function getFilterId(filterName){
 	return filterId;
 }
 
+function hideTopShelf(){
+	document.getElementById("scrollingProductDiv").style.display = "none";
+	document.getElementById("buttonForShowDiv").style.display = "flex";
+}
 
+function showTopShelf(){
+	document.getElementById("buttonForShowDiv").style.display = "none";
+	document.getElementById("scrollingProductDiv").style.display = "flex";
+}
 
 
 //get query string if present and set variable to it
