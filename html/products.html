@@ -962,6 +962,8 @@ function minusQuantity(id, price){
 		document.getElementById("cartTotalPriceNum").innerText = totalCartPrice;
 		document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
 	}
+
+	
 	
 }
 
@@ -977,6 +979,11 @@ function removeProduct(id, price){
 	totalCartPrice = Math.round(totalCartPrice * 100) / 100;
 	document.getElementById("cartTotalPriceNum").innerText = totalCartPrice;
 	document.getElementById("cartItemContainer"+id).remove();
+	
+	if(totalCartItems == 0){
+		document.getElementById("cartButton").style.background = "url(../imgs/navIcons/cart_empty.png) no-repeat center center";
+		document.getElementById("cartButton").style.backgroundSize = "40px 40px";
+	}
 	
 }
 
