@@ -147,3 +147,12 @@ function submitContactMessage(){
 	hideContactDiv();
 }
 /* End of Contact Form Functions */
+
+
+function navQuickSearch(btn){
+	var field = document.getElementById("navSearchField");
+	if(field.value.length > 0){
+		window.location.href = "products.html?para1=" + field.value;
+	}
+	
+}

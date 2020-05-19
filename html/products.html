@@ -226,7 +226,7 @@
 		opacity: .5;
 	}
 
-	.productTableFilterDiv input[type="search"], input[type="search"]:focus {
+	.productTableFilterSearch, .productTableFilterSearch:focus {
 		font-size: 14px;
 		padding: 5px 0 5px 25px;
 		width: 150px;
@@ -239,7 +239,7 @@
 		
 	}
 
-	.productTableFilterDiv input[type="search"]:focus, input[type="search"]:hover {
+	.productTableFilterSearch:focus, .productTableFilterSearch:hover {
 		outline: solid #DAA520;
 	}
 
@@ -294,6 +294,7 @@
 		background-color: gainsboro;
 		display: inline-block;
 		width: 100%;
+		min-height: 50vh;
 	}
 
 	.productTableTopRow {
@@ -523,7 +524,7 @@
 	 				<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
 	    		placeholder="Quick Search" />
 				</form>
-				<button class="searchbtn"></button>
+				<button class="searchbtn" onclick="navQuickSearch(this)"></button>
 			</div>
 			
 	 		<div class="navBarInnerDiv">
@@ -609,7 +610,7 @@
 		<div class="productTableContent">
 			<div class="productTableFilters">
 				
-				<div class="productTableFilterDiv"><input type="search" id="productFilterSearch" oninput="filterSearch()" /></div>
+				<div class="productTableFilterDiv"><input type="search" class="productTableFilterSearch" id="productFilterSearch" oninput="filterSearch(null)" /></div>
 				<div id="filterListDiv" class="productTableFilterDiv">
 					
 					<!-- Javascript Generated Filter List -->
@@ -930,13 +931,29 @@ filterData.forEach(function(item, index){
 			if(subCheck.checked === true){
 				displayFilter(item[1]);
 				filterArray.push(item[1]);
-				
+				//check if all subcategories are checked
+				var elements = document.getElementsByClassName(primFiltTemp+"CheckBox");
+				var allChecked = true;
+				for(var i = 0; i < elements.length; i++){
+					if(!(elements[i].checked)){
+						allChecked = false;
+					}
+				}
+				if(allChecked){
+					if(!(document.getElementById(primFiltTemp+"CheckBox").checked)){
+						document.getElementById(primFiltTemp+"CheckBox").checked = true;
+					}
+				}
 			} else {
 				removeFilter(item[1]);
 				var index = filterArray.indexOf(item[1].toString());
 				if (index !== -1) filterArray.splice(index, 1);
-				
+				//uncheck primary filter if checked
+				if(document.getElementById(primFiltTemp+"CheckBox").checked){
+					document.getElementById(primFiltTemp+"CheckBox").checked = false;
+				}
 			}
+			filterSearch(null);
 		}
 		
 
@@ -1077,32 +1094,120 @@ window.onclick = function() {
 
 
 
-function filterSearch(){
-	filterArray = new Array();
+function filterSearch(queryString){
 	//clear products
 	var rows = document.getElementsByClassName("productTableRow");
 
 	while(rows.length > 0){
 		rows[0].parentNode.removeChild(rows[0]);
 	}
-
-
 	var searchField = document.getElementById("productFilterSearch");
 	var value = searchField.value;
+
+	if(queryString != null && queryString.length > 0){
+		value = queryString;
+	}
 
  	productsShowing = 0;
  	rowsShowing = 0;
 
-	for(var i = 0; i < productArray.length; i++){
-		if(productArray[i][2].toLowerCase().includes(value.toLowerCase()) || productArray[i][4].toLowerCase().includes(value.toLowerCase())){
-			addProduct(productArray[i]);
+ 	var tempArray = productArray;
+
+ 	if(filterArray.length > 0){
+ 		tempArray = [];
+ 		for(var filter = 0; filter < filterArray.length; filter++){
+ 			var filterId = getFilterId(filterArray[filter]);
+ 			for(var i = 0; i < productArray.length; i++){
+				if(productArray[i][1] === filterId.toString()){
+					tempArray.push(productArray[i])
+				}
+			}
+ 		}
+ 	}
+
+	for(var i = 0; i < tempArray.length; i++){
+		if(tempArray[i][2].toLowerCase().includes(value.toLowerCase()) || tempArray[i][4].toLowerCase().includes(value.toLowerCase())){
+			addProduct(tempArray[i]);
 		}
 	}
 	document.getElementById("filterResultLabel").innerHTML = "&#9656; Found "+productsShowing+" Search Results with: ' "+value+" '";
 
 }
 
-filterSearch();
+function getFilterId(filterName){
+	var filterId = -1;
+	switch (filterName){
+		case 'Gin':
+			filterId =  1;
+			break;
+		case 'Vodka':
+			filterId =  2;
+			break;
+		case 'Rum':
+			filterId =  3;
+			break;
+		case 'Tequila':
+			filterId =  4;
+			break;
+		case 'Brandy':
+			filterId =  5;
+			break;
+		case 'Whiskey':
+			filterId =  6;
+			break;
+		case 'IPA':
+			filterId =  7;
+			break;
+		case 'Stout':
+			filterId =  8;
+			break;
+		case 'Lager':
+			filterId =  9;
+			break;
+		case 'Ale':
+			filterId =  10;
+			break;
+		case 'Red':
+			filterId =  11;
+			break;
+		case 'White':
+			filterId =  12;
+			break;
+		case 'Rose':
+			filterId =  13;
+			break;
+		case 'Dessert':
+			filterId =  14;
+			break;
+		case 'Champagne':
+			filterId =  15;
+			break;
+		case 'Bourbon':
+			filterId =  16;
+			break;
+		case 'Scotch':
+			filterId =  17;
+			break;
+		default:
+			filterId =  -1;
+			break;
+	}
+	return filterId;
+}
+
+
+
+
+//get query string if present and set variable to it
+
+let pageLoadFilter = decodeURIComponent(window.location.search);
+if(pageLoadFilter.trim() === "") {
+	pageLoadFilter = "?para1=";
+}
+pageLoadFilter = pageLoadFilter.split("?para1=")[1];
+
+
+filterSearch(pageLoadFilter);
 
 
 </script>  
