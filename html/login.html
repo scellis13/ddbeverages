@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang = "en-US">
+<head>
+	<meta charset = "UTF-8">
+	<title>
+		Blank Page
+	</title>
+
+		<link rel="stylesheet" 
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="../javascript/general_javascript.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/general_styling.css" />
+
+</head>
+
+<style>
+
+	#cartButton, #cartButton:focus {
+		width: 50px;
+		height: 40px;
+		background: url(../imgs/navIcons/cart_empty.png) no-repeat center center;
+		background-size: 40px 40px;
+		background-color: transparent;
+		border: none;
+		text-decoration: none;
+		outline: none;
+		padding-top: 40px;
+		margin-right: 50px;
+	}
+	.column {
+		flex: 50%;
+		padding: 3px;
+	}
+	.row {
+		display: flex;
+	}
+	.verticalLine {
+		border-left: 5px solid black;
+		height: 100%;
+		margin: 50px 0px;
+	}
+	input[type=text], input[type=password] {
+		width: 80%;
+		padding: 10px;
+		margin: 20px;
+	}
+	.loginButton {
+		background: black;
+		color: white;
+		cursor: pointer;		
+		width: 83%;
+		padding: 10px 10px;
+		margin: 20px;
+	}
+</style>
+
+
+<body>
+	<div class="homeLinkDiv"><a href="index.html"></a></div>
+	<div class="navBar" id="navBarId">
+		<div class="navBarLeftSplit">
+			<div class="navBarInnerDiv">
+				<a href="products.html" class="footerA navLink" id="shopNav">SHOP</a>
+				<a onclick="showContactDiv()" class="footerA navLink" id="shopNav">CONTACT US</a>
+				<a href="faq.html" class="footerA navLink" id="faqNav">FAQ</a>
+			</div>
+		</div>
+		<div class="navBarRightSplit">
+			<div class="navBarInnerDiv navSearchDiv">
+				<form class="searchform">
+	 				<input id="navSearchField" class="searchfield" autocomplete="off" name="navSearchField" type="search" 
+	    		placeholder="Quick Search" />
+				</form>
+				<button class="searchbtn"></button>
+			</div>
+			
+	 		<div class="navBarInnerDiv">
+	 			<button id="userButton" class="footerA" onclick="userLogin()"></button>
+	 		</div>
+
+	 		<div class="navBarInnerDiv">
+	 			<button id="cartButton" class="footerA" onclick="showCart()"></button>
+	 		</div>
+ 		</div>
+	</div>
+	<div id="cartDisplayDiv" class="cartDisplayCreate cartDisplayHiding">
+		
+		<div id="cartTopLabelDiv">
+			<p id="cartLabel">CART</p>
+			<p id="cartTotalItems">Total Items: 0</p>
+			<p id="cartTotalPrice">TOTAL: $0.00</p>
+		</div>
+		<div id="cartInnerDivScrollable" class="cartInnerDivScrollable">
+			
+		</div>
+		<hr id="cartHR">
+		<button onclick="processCheckout()" id="cartDisplayCheckout" class="footerA">CHECK OUT</button>
+
+	</div>
+	<div id="contactDivID"></div>
+
+
+	<div class="content">
+
+
+
+
+		<div class="half-page">
+
+		<center>	
+<div class="row">
+  <div class="column">
+    <form action="user_settings.html" class="loginForm">
+      <br><br><br><h1>Login</h1><br>
+     
+      <input type="text" placeholder="Email or Username" name="email" required><br>
+      <input type="password" placeholder="Password" name="psw" required><br>
+      
+      <a href="user_settings.html"><button type="submit" class="loginButton">Login</button></a>
+      <p>Forgot your <a href="#">Password?</a></p>
+    </form>
+  </div>
+  
+  <div class="column verticalLine">
+    <form action="/action_page.php" class="loginForm">
+
+      <h1>Create an Account</h1><br>
+        
+	<input type="text" placeholder="Email" name="email" required><br>
+        <input type="password" placeholder="Password" name="psw" required><br>
+
+        <a href="user_settings.html"><button type="submit" class="loginButton">Register</button></a>
+	<p>An email will be sent to you to confirm account creation.</p>    
+    </form>
+  </div>
+</div>
+  </center>
+		</div>
+		
+
+
+
+	</div> <!-- End of Content -->
+
+
+	<div id="footer" class="footer footerTop">
+		<p>&copy; 2020, Dynamic Developers</p>
+	</div>
+</body>
+
+<script>
+
+
+</script>
+</html>
