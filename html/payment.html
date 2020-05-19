@@ -295,13 +295,7 @@
 			border: 1px solid #DAA520;
 		}
 
-	#orderReviewContent {
-		width: 100%;
-		height: 300px;
-		font-family: Arial;
-		font-size: 20px;
-		display: none;
-	}
+	
 
 </style>
 
@@ -545,9 +539,76 @@
 			</div>
 		</div>
 
+			<style>
 
+				#orderReviewContent {
+					width: 100%;
+					font-family: Arial;
+					font-size: 18px;
+					display: flex;
+					flex-wrap: wrap;
+				}
+
+					
+				.warningLabel {
+					width: 100%;
+					background-color: lightgrey;
+					padding: 5px;
+				}
+
+				.topRowReview {
+					display: flex;
+					width: 100%;
+					background-color: lightgrey;
+					justify-content: space-between;
+					align-items: center;
+					text-align: left;
+					font-weight: bold;
+				}
+
+				.productTitleLabel {
+					width: 50% !important;
+				}
+
+				.colSize {
+					padding: 0 15px 0 15px;
+					width: 75px;
+				}
+
+				.productRow {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					text-align: left;
+					overflow-y: wrap;
+					font-weight: normal;
+					background-color: gainsboro;
+				}
+
+				.productTitle {
+					width: 50% !important;
+				}
+
+			</style>
 			<div id="orderReviewContent">
-				Order Review Information Here
+				<div class="warningLabel">
+					<i>WARNING: Drinking distilled spirits, beer, coolers, wine and other alcoholic beverages may increase cancer risk, and, during pregnancy, can cause birth defects.</i>
+				</div>
+				<div class="topRowReview">
+					<p class="productTitleLabel colSize">Product Name</p>
+					<p class="colSize">Price</p>
+					<p class="colSize">Qty</p>
+					<p class="colSize">Subtotal</p>
+					<p class="colSize">Discount</p>
+				</div>
+						<div class="productRow">
+							<p class="productTitle colSize">Item Title</p>
+							<p class="colSize">$00.00</p>
+							<p class="colSize">0</p>
+							<p class="colSize">$00.00</p>
+							<p class="colSize">0%</p>
+						</div>
 			</div>
 	</div> <!-- End of Content -->
 
