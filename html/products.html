@@ -879,9 +879,11 @@ function addProduct(product){
 		rowsShowing++;
 		
 	} 
+	var rows = document.getElementsByClassName("productTableRow");
+	var lastItem = rows[rowsShowing-1].lastChild;
 
 	var rows = document.getElementsByClassName("productTableRowLiner");
-	$( "<div class='card'><a id='"+productIdData+"InfoIcon' class='infoIcon' onclick='productInfo()''></a><img src='"+ imgData + "' class=\"cardImg\"'' /><h2 class='cardText'>"+titleData+"<br><i>" + sizeData + "</i></h2><p class='price'>$"+priceData+"</p><p><button id='"+productIdData+"CartButton'>Add to Cart</button></p></div>" ).insertAfter(rows[rowsShowing - 1]);
+	$( "<div class='card'><a id='"+productIdData+"InfoIcon' class='infoIcon' onclick='productInfo()''></a><img src='"+ imgData + "' class=\"cardImg\"'' /><h2 class='cardText'>"+titleData+"<br><i>" + sizeData + "</i></h2><p class='price'>$"+priceData+"</p><p><button id='"+productIdData+"CartButton'>Add to Cart</button></p></div>" ).insertAfter(lastItem);
 	productsShowing++;
 
 
@@ -935,6 +937,9 @@ function addProduct(product){
 			document.getElementById('addQuantity' + productIdData).click();
 		}
 		document.getElementById("cartTotalItemsNum").innerText = totalCartItems;
+		document.getElementById("cartButton").style.background = "url(../imgs/navIcons/cart_filled.png) no-repeat center center";
+		document.getElementById("cartButton").style.backgroundSize = "40px 40px";
+		popUpCart();
 	}
 }
 
@@ -1187,7 +1192,7 @@ filterData.forEach(function(item, index){
 					document.getElementById(primFiltTemp+"CheckBox").checked = false;
 				}
 			}
-			document.getElementById("sortTopLabel").innerHTML = "Sort By: &emsp; &emsp; &emsp; &emsp; &#9660;";
+			
 			filterSearch(null);
 		}
 		
@@ -1336,22 +1341,30 @@ function showSortItems(){
 		container.style.display = "none";
 	}
 }
-var sorted = false;
+var sortByHighlow = false;
+var sortByLowhigh = false;
 
 function sortBy(category){
-	sorted = true;
+
+	document.getElementById("sortItemContainer").style.display = "none";
 	switch (category){
 		case "highlow":
-			arrayShowing.sort(compareByHighlow);
+			sortByHighlow = true;
+			sortByLowhigh = false;
 			filterSearch(null);
-			sorted = false;
+			
 			document.getElementById("sortTopLabel").innerHTML = "Sort By: High to Low &#9660;";
 			break;
 		case "lowhigh":
-			arrayShowing.sort(compareByLowHigh);
+			sortByLowhigh = true;
+			sortByHighlow = false;
 			filterSearch(null);
-			sorted = false;
 			document.getElementById("sortTopLabel").innerHTML = "Sort By: Low to High &#9660;";
+			break;
+		default:
+			sortByLowhigh = false;
+			sortByHighlow = false;
+			filterSearch(null);
 			break;
 	}
 }
@@ -1395,9 +1408,6 @@ function filterSearch(queryString){
  	productsShowing = 0;
  	rowsShowing = 0;
 
- 	if(!sorted){
- 		arrayShowing = productArray;
- 	}
 
  	if(filterArray.length > 0){
  		arrayShowing = [];
@@ -1409,7 +1419,15 @@ function filterSearch(queryString){
 				}
 			}
  		}
+ 	} else {
+ 		arrayShowing = productArray;
  	}
+
+	if(sortByLowhigh){
+		arrayShowing.sort(compareByLowHigh);
+	} else if (sortByHighlow) {
+		arrayShowing.sort(compareByHighlow);
+	}
 
 	for(var i = 0; i < arrayShowing.length; i++){
 		if(arrayShowing[i][2].toLowerCase().includes(value.toLowerCase()) || arrayShowing[i][4].toLowerCase().includes(value.toLowerCase())){

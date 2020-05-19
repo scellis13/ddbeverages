@@ -132,7 +132,7 @@
 	#cartButton, #cartButton:focus {
 		width: 50px;
 		height: 40px;
-		background: url(../imgs/navIcons/cart_filled.png) no-repeat center center;
+		background: url(../imgs/navIcons/cart_empty.png) no-repeat center center;
 		background-size: 40px 40px;
 		background-color: transparent;
 		border: none;

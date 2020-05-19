@@ -101,6 +101,11 @@ function showCart(){
 	
 }
 
+function popUpCart(){
+	document.getElementById("cartDisplayDiv").classList.add("cartDisplayShowing");
+	document.getElementById("cartDisplayDiv").classList.remove("cartDisplayHiding");
+}
+
 function processCheckout(){
 	//if checkout is ever empty, create message.
 	window.location.href = 'payment.html';
