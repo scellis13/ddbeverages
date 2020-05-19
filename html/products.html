@@ -248,6 +248,62 @@
 		cursor: pointer;
 	}
 
+	#sortContainer {
+		font-family: Arial;
+		font-size: 12px;
+		position: relative;
+	}
+	#sortTopLabel {
+		margin: 0;
+		padding: 10px;
+		min-width: 150px;
+		max-width: 150px;
+		width: 150px;
+		background-color: white;
+		border: 1px solid lightgrey;
+		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
+		outline: none;
+		border-radius: 3px;
+		position: relative;
+	}
+
+	#sortTopLabel:hover, #sortTopLabel:focus {
+		cursor: pointer;
+		border: 1px solid #DAA520;
+		outline: none;
+	}
+
+	#sortItemContainer {
+		width: 150px;
+		min-width: 150px;
+		max-width: 150px;
+		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
+		border: 1px solid transparent;
+		background-color: gainsboro;
+		padding: 10px;
+		position: absolute;
+		top: 37px;
+		left: 0;
+		z-index: 2;
+		display: none;
+	}
+
+	.sortItem {
+		width: 150px;
+		min-width: 150px;
+		max-width: 150px;
+		padding: 10px 0 10px 0;
+		margin-top: 5px;
+		text-align: left;
+	}
+
+	.sortItem:hover {
+		opacity: .5;
+		border-radius: 3px;
+		cursor: pointer;
+	}
+
+
 	#filterArrayResults {
 		display: flex;
 		flex-wrap: wrap;
@@ -687,6 +743,13 @@
 			</div> <!-- End of Table Filter Column -->
 			<div class="productTableRowContainer">
 				<div class="productTableTopRow">
+					<div id="sortContainer">
+						<p id="sortTopLabel" onclick="showSortItems()">Sort By: &#9660;</p>
+						<div id="sortItemContainer">
+							<div class="sortItem">Price High-Low</div>
+							<div class="sortItem">Price Low-High</div>
+						</div>
+					</div>
 					<p id="filterResultLabel">&#9656; Found 0 Search Results with: ""</p>
 					<div id="filterArrayResults">
 						
@@ -1260,6 +1323,14 @@ window.onclick = function() {
 }
 
 
+function showSortItems(){
+	var container = document.getElementById("sortItemContainer");
+	if(container.style.display === "none"){
+		container.style.display = "block";
+	} else {
+		container.style.display = "none";
+	}
+}
 
 
 function filterSearch(queryString){
