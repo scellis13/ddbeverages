@@ -15,14 +15,6 @@
 		<link rel="stylesheet" type="text/css" href="../css/general_styling.css" />
 
 </head>
-
-	
-	
-	
-	
-	
-	
-	
 	
 	
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,15 +23,35 @@
   box-sizing: border-box;
 }
 
+.content {
+	width: 75%;
+	margin-left: 12.5%;
+
+}
+
 #myInput {
   background-image: url('/css/searchicon.png');
   background-position: 10px 12px;
   background-repeat: no-repeat;
-  width: 100%;
+  width: 75%;
+  margin-left: 12.5%;
   font-size: 16px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
+}
+
+h2 {
+	text-align: center;
+	width: 100%;
+}
+
+hr {
+	margin: 10px 0 20px 0;
+}
+
+li {
+	font-family: Arial;
 }
 
 #myUL {
@@ -48,20 +60,40 @@
   margin: 0;
 }
 
-#myUL li a {
+.questionLI {
   border: 1px solid #ddd;
   margin-top: -1px; /* Prevent double borders */
+  margin-bottom: 5px;
   background-color: #f6f6f6;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 22px;
   color: black;
-  display: block
+  display: block;
 }
 
-#myUL li a:hover:not(.header) {
+.answerLI {
+	margin-top: -10px;
+	font-size: 18px;
+	background-color: white;
+	opacity: .75;
+	display: none;
+	padding: 10px 10px 10px 50px;
+	margin-bottom: 10px;
+}
+
+.questionLI:hover {
+	cursor: pointer;
+}
+
+.questionLI:hover:not(.header) {
   background-color: #eee;
 }
+
+.questionLIPressed {
+	background-color: black !important;
+}
+
 
 </style>
 	
@@ -69,78 +101,6 @@
 	
 	
 </head>
-<body>
-
-<h2>Frequently asked questions!</h2>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type in a keyword or question.." title="Type in a name">
-
-<ul id="myUL">
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>How do I use my promo code?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>How can I track my order?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> Is beer or wine safer to drink than liquor?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>What health problems are associated with excessive alcohol use?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>What is the standard drink size in the U.S.?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html>Is it okay to drink while pregnant?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> Is it safe to drink alcohol and drive?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> What are the delivery charges?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> What is considered intoxicated?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> What is alcoholism?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> Do you ship long distances?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> How long does shipping take?</a></li>
-  <li><a /Users/Documents/GitHub/ddbeverages/html/faq.html> Is there a limit to how much product I can order?</a></li>
-</ul>
-
-<script>
-function myFunction() {
-    var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
-    filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
-    li = ul.getElementsByTagName("li");
-    for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
-        txtValue = a.textContent || a.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
-        } else {
-            li[i].style.display = "none";
-        }
-    }
-}
-</script>	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<style>
-
-	#cartButton, #cartButton:focus {
-		width: 50px;
-		height: 40px;
-		background: url(../imgs/navIcons/cart_empty.png) no-repeat center center;
-		background-size: 40px 40px;
-		background-color: transparent;
-		border: none;
-		text-decoration: none;
-		outline: none;
-		padding-top: 40px;
-		margin-right: 50px;
-	}
-
-</style>
 
 
 <body>
@@ -190,6 +150,81 @@ function myFunction() {
 
 	<div class="content">
 
+
+
+			<h2>Frequently asked questions!</h2>
+
+			<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Type in a keyword or question.." title="Type in a name">
+
+			<hr>
+
+			<ul id="myUL">
+			  <li id="question1" class="questionLI"><a onclick="showAnswer(1)">How do I use my promo code?</a></li>
+			  <li id="answer1" class="answerLI"><a>
+			  		The Answer for question 1 will go here.
+			  </a></li>
+			  <li id="question2" class="questionLI"><a onclick="showAnswer(2)">How can I track my order?</a></li>
+			  <li id="answer2" class="answerLI"><a>
+			  		The Answer for question 2 will go here.
+			  </a></li>
+			  <li id="question3" class="questionLI"><a onclick="showAnswer(3)"> Is beer or wine safer to drink than liquor?</a></li>
+			  <li id="answer3" class="answerLI"><a>
+			  		The Answer for question 3 will go here.
+			  </a></li>
+
+			  <li id="question4" class="questionLI"><a onclick="showAnswer(4)">What health problems are associated with excessive alcohol use?</a></li>
+			  <li id="answer4" class="answerLI"><a>
+			  		The Answer for question 4 will go here.
+			  </a></li>
+
+			  <li id="question5" class="questionLI"><a onclick="showAnswer(5)">What is the standard drink size in the U.S.?</a></li>
+			  <li id="answer5" class="answerLI"><a>
+			  		The Answer for question 5 will go here.
+			  </a></li>
+
+			  <li id="question6" class="questionLI"><a onclick="showAnswer(6)">Is it okay to drink while pregnant?</a></li>
+			  <li id="answer6" class="answerLI"><a>
+			  		The Answer for question 6 will go here.
+			  </a></li>
+
+			  <li id="question7" class="questionLI"><a onclick="showAnswer(7)"> Is it safe to drink alcohol and drive?</a></li>
+			  <li id="answer7" class="answerLI"><a>
+			  		The Answer for question 7 will go here.
+			  </a></li>
+
+			  <li id="question8" class="questionLI"><a onclick="showAnswer(8)"> What are the delivery charges?</a></li>
+			  <li id="answer8" class="answerLI"><a>
+			  		The Answer for question 8 will go here.
+			  </a></li>
+
+			  <li id="question9" class="questionLI"><a onclick="showAnswer(9)"> What is considered intoxicated?</a></li>
+			  <li id="answer9" class="answerLI"><a>
+			  		The Answer for question 9 will go here.
+			  </a></li>
+
+			  <li id="question10" class="questionLI"><a onclick="showAnswer(10)"> What is alcoholism?</a></li>
+			  <li id="answer10" class="answerLI"><a>
+			  		The Answer for question 10 will go here.
+			  </a></li>
+
+			  <li id="question11" class="questionLI"><a onclick="showAnswer(11)"> Do you ship long distances?</a></li>
+			  <li id="answer11" class="answerLI"><a>
+			  		The Answer for question 11 will go here.
+			  </a></li>
+
+			  <li id="question12" class="questionLI"><a onclick="showAnswer(12)"> How long does shipping take?</a></li>
+			  <li id="answer12" class="answerLI"><a>
+			  		The Answer for question 12 will go here.
+			  </a></li>
+
+			  <li id="question13" class="questionLI"><a onclick="showAnswer(13)"> Is there a limit to how much product I can order?</a></li>
+			  <li id="answer13" class="answerLI"><a>
+			  		The Answer for question 13 will go here.
+			  </a></li>
+
+			</ul>
+
+
 		
 	</div> <!-- End of Content -->
 
@@ -200,6 +235,40 @@ function myFunction() {
 </body>
 
 <script>
+
+
+
+function myFunction() {
+	var questions = document.getElementsByClassName("answer13");
+	for(var i = 0; i < questions.length; i++){
+		questions.style.display = "none";
+	}
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "block";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+
+function showAnswer(num){
+	var answer = document.getElementById("answer" + num);
+	if (answer.style.display === "block") {
+	  answer.style.display = "none";
+	  } else {
+	  answer.style.display = "block";
+	}  
+}
+
+
 
 
 </script>
