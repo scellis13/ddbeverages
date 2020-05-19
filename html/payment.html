@@ -295,7 +295,78 @@
 			border: 1px solid #DAA520;
 		}
 
-	
+	#orderReviewContent {
+					width: 100%;
+					font-family: Arial;
+					font-size: 18px;
+					display: none;
+					flex-wrap: wrap;
+				}
+
+					
+				.warningLabel {
+					width: 100%;
+					background-color: lightgrey;
+					padding: 5px;
+				}
+
+				.topRowReview {
+					display: flex;
+					width: 100%;
+					background-color: lightgrey;
+					justify-content: space-between;
+					align-items: center;
+					text-align: left;
+					font-weight: bold;
+				}
+
+				.productTitleLabel {
+					width: 50% !important;
+				}
+
+				.colSize {
+					padding: 0 15px 0 15px;
+					width: 75px;
+				}
+
+				.productRow {
+					width: 100%;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					text-align: left;
+					overflow-y: wrap;
+					font-weight: normal;
+					background-color: gainsboro;
+				}
+
+				.productTitle {
+					width: 50% !important;
+				}
+
+				.paymentReviewDiv {
+					width: 50%;
+					position: absolute;
+				    bottom: -200px;
+				    right: 0;
+				    height: 200px;
+				}
+
+					.paymentReviewDivRow {
+						width: 95%;
+						height: 40px;
+						font-size: 20px;
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						padding-left: 10px;
+						padding-right: 10px;
+					}
+
+					.purchaseButton {
+						margin: 25px 0px 100px 30%;
+						background-color: gainsboro;
+					}
 
 </style>
 
@@ -538,59 +609,6 @@
 				<p>ORDER REVIEW</p>
 			</div>
 		</div>
-
-			<style>
-
-				#orderReviewContent {
-					width: 100%;
-					font-family: Arial;
-					font-size: 18px;
-					display: flex;
-					flex-wrap: wrap;
-				}
-
-					
-				.warningLabel {
-					width: 100%;
-					background-color: lightgrey;
-					padding: 5px;
-				}
-
-				.topRowReview {
-					display: flex;
-					width: 100%;
-					background-color: lightgrey;
-					justify-content: space-between;
-					align-items: center;
-					text-align: left;
-					font-weight: bold;
-				}
-
-				.productTitleLabel {
-					width: 50% !important;
-				}
-
-				.colSize {
-					padding: 0 15px 0 15px;
-					width: 75px;
-				}
-
-				.productRow {
-					width: 100%;
-					display: flex;
-					justify-content: space-between;
-					align-items: center;
-					text-align: left;
-					overflow-y: wrap;
-					font-weight: normal;
-					background-color: gainsboro;
-				}
-
-				.productTitle {
-					width: 50% !important;
-				}
-
-			</style>
 			<div id="orderReviewContent">
 				<div class="warningLabel">
 					<i>WARNING: Drinking distilled spirits, beer, coolers, wine and other alcoholic beverages may increase cancer risk, and, during pregnancy, can cause birth defects.</i>
@@ -611,6 +629,15 @@
 				</div>
 
 				<button onclick="returnShopping()" class="checkoutButtons">CONTINUE SHOPPING</button>
+				<div class="paymentReviewDiv">
+					<div class="paymentReviewDivRow"><p>Total Items:</p><p>1</p></div>
+					<div class="paymentReviewDivRow"><p>Retail Price:</p><p>$00.00</p></div>
+					<div class="paymentReviewDivRow"><p>Flat Shipping Rate:</p><p>$10.00</p></div>
+					<div class="paymentReviewDivRow"><p>Sales Tax:</p><p>0%</p></div>
+					<div class="paymentReviewDivRow"><p><b>Grand Total:</b></p><p><b>$10.00</b></p>
+					</div>
+					<button onclick="placeOrder()" class="checkoutButtons purchaseButton">PLACE ORDER</button>
+				</div>
 			</div>
 	</div> <!-- End of Content -->
 
