@@ -421,7 +421,8 @@
 	}
 
 	.cardImg {
-		background-color: white;
+		height: 200px;
+		width: 150px;
 	}
 
 	.infoIcon {
@@ -732,7 +733,7 @@ var productArray = [["2","2","Ciroc Ultra-Premium Vodka","../imgs/products_imgs/
 ["3","8","High Water Campfire Stout","../imgs/products_imgs/campfire.png","'High Water Campfire Stout is a stout brewed with graham crackers, molasses with natural flavor added. Campfire stout evokes fond memories of wilderness and camping adventures. Notes of chocolate and graham cracker topped with a hint of marshmallow will lead you wanting s�more.'","6.5","22 oz","6.49","No","1018"],
 ["3","8","Guinness","../imgs/products_imgs/guinness_4pack.png","'Guinness is an Irish Dry Stout that pours to be a beautiful brown color with a creamy tan head. Smooth roasted malt and coffee flavors are balanced by some hoppiness, and the mouthful is as silky as you could ask for.'","4.2","4 Pack / 15 oz.","6.99","No","1019"],
 ["3","9","Heineken","../imgs/products_imgs/heineken_24pack.png","'Heineken is a full-bodied premium lager with deep golden color, light fruity aroma, a mild bitter taste and a balanced hop aroma leaving a crisp, clean finish for ultimate refreshing taste.'","5","24 Pack / 12 oz.","25.99","No","1020"],
-["3","9","Heineken","../imgs/products_imgs/heineken_12pack.png","'Heineken is a full-bodied premium lager with deep golden color, light fruity aroma, a mild bitter taste and a balanced hop aroma leaving a crisp, clean finish for ultimate refreshing taste.'","5","12 Pack / 12 oz.","13.5","No","1021"],
+["3","9","Heineken","../imgs/products_imgs/heineken_12pack.png","'Heineken is a full-bodied premium lager with deep golden color, light fruity aroma, a mild bitter taste and a balanced hop aroma leaving a crisp, clean finish for ultimate refreshing taste.'","5","12 Pack / 12 oz.","13.49","No","1021"],
 ["3","9","Stella Artois","../imgs/products_imgs/stella_24pack.png","'Stella Artois is traditional malted barley and the finest European hops give Stella Artois its superior quality and full characteristic flavor. The history of Stella Artois can be traced back to 1366 in Leuven, Belgium.'","5","24 Pack / 11 oz.","26.99","No","1022"],
 ["3","9","Stella Artois","../imgs/products_imgs/stella_12pack.png","'Stella Artois is traditional malted barley and the finest European hops give Stella Artois its superior quality and full characteristic flavor. The history of Stella Artois can be traced back to 1366 in Leuven, Belgium.'","5","12 Pack / 11 oz.","13.99","No","1023"],
 ["3","10","Newcastle Brown Ale","../imgs/products_imgs/newcastle_12pack.png","'Newcastle Brown Ale is the gold standard in brown ales since Colonel Jim Porter perfected his recipe in 1927. It's nutty aroma, full-bodied flavor and delicate fruity aroma makes it pleasurable and easy to drink.'","4.7","12 Pack / 12 oz.","25.99","No","1024"],
@@ -753,6 +754,7 @@ var productsShowing = 0;
 var rowsShowing = 0;
 var maxProductsPerRow = 6;
 var totalCartItems = 0;
+var totalCartPrice = 0.0; //id #cartTotalPriceNum
 var cartProducts = [];
 
 /*
@@ -799,7 +801,7 @@ function addProduct(product){
 	} 
 
 	var rows = document.getElementsByClassName("productTableRowLiner");
-	$( "<div class='card'><a id='"+productIdData+"InfoIcon' class='infoIcon' onclick='productInfo()''></a><img src='"+ imgData + "' style='width: 90%;'' /><h2 class='cardText'>"+titleData+"</h2><p class='price'>"+priceData+"</p><p><button id='"+productIdData+"CartButton'>Add to Cart</button></p></div>" ).insertAfter(rows[rowsShowing - 1]);
+	$( "<div class='card'><a id='"+productIdData+"InfoIcon' class='infoIcon' onclick='productInfo()''></a><img src='"+ imgData + "' class=\"cardImg\"'' /><h2 class='cardText'>"+titleData+"</h2><p class='price'>$"+priceData+"</p><p><button id='"+productIdData+"CartButton'>Add to Cart</button></p></div>" ).insertAfter(rows[rowsShowing - 1]);
 	productsShowing++;
 
 
@@ -818,7 +820,7 @@ function addProduct(product){
 		"<div id=\"cartItemContainer"+productIdData+"\" class=\"cartItemContainer\">" + 
 				"<button onclick=\"removeProduct("+productIdData+")\" id=\"cartItemDelete\">x</button>" + 
 				"<div class=\"cartItemPicture\">" + 
-					"<img class=\"cardImg\" src=\""+imgData+"\" />" + 
+					"<img class=\"cartImg\" src=\""+imgData+"\" />" + 
 				"</div>" + 
 				"<div class=\"cartItemInfo\">" + 
 					"<p id=\"itemTitle\">" + 
@@ -829,7 +831,7 @@ function addProduct(product){
 						"<input id=\"quantityInput"+productIdData+"\" type=\"text\" value=\"1\"></input>" + 
 						"<button onclick='addQuantity("+productIdData+")' id=\"addQuantity"+productIdData+"\">+</button>" + 
 					"</p>" + 
-					"<p class=\"itemPrice\" id=\"itemPrice"+productIdData+"\">"+priceData+"</p>" + 
+					"<p class=\"itemPrice\" id=\"itemPrice"+productIdData+"\">$"+priceData+"</p>" + 
 				"</div>" + 
 			"</div>";
 
@@ -1191,10 +1193,10 @@ function setDropDownInfoDiv(picture, title, description, proof, price){
 	var titleElement = document.getElementById("dropDownInfo_title");
 	var descriptionElement = document.getElementById("dropDownInfo_description");
 	var proofElement = document.getElementById("dropDownInfo_proof");
-	var priceElement = document.getElementById("dropDownInfo_price");
+	var priceElement = "$" + document.getElementById("dropDownInfo_price");
 
 	imgElement.style.background = "url(" + picture + ") no-repeat center center";
-	imgElement.style.backgroundSize = "200px 400px";
+	imgElement.style.backgroundSize = "275px 400px";
 	titleElement.innerText = title;
 	descriptionElement.innerText = description;
 	proofElement.innerText = "Proof " + proof;
