@@ -179,6 +179,7 @@
 		height: 200px;
 		margin-top: 75px;
 		min-width: 100px;
+		transition: 1s ease;
 	}
 
 	.productDisplayLabelDiv {
@@ -630,7 +631,7 @@
 			<!-- -->
 			<div class="scrollingProductDivRight">
 				
-				<div class="scrollingProductDivRight_Left arrowDiv"><a class="arrows prev" onclick="">&#10094;</a></div>
+				<div class="scrollingProductDivRight_Left arrowDiv"><a onclick="shiftProductsArrow('left')" class="arrows prev" onclick="">&#10094;</a></div>
 				<div class="scrollingProductDivRight_Center">
 					<div id="leftProductDisplayDivContainer" class="productDisplayDivContainer" onmouseover="showProductLabel('left')" onmouseout="hideProductLabel('left')">
 						<a id="leftInfoLink" class="scrollingInfoIcon" onclick="productInfo()"></a>
@@ -650,7 +651,7 @@
 					</div>
 					
 				</div>
-				<div class="scrollingProductDivRight_Right arrowDiv"><a class="arrows next">&#10095;</a></div>
+				<div class="scrollingProductDivRight_Right arrowDiv"><a onclick="shiftProductsArrow('right')" class="arrows next">&#10095;</a></div>
 
 			</div>
 			<div class="hideTopShelfDiv"><button class="hideTopShelfButton" onclick="hideTopShelf(this)"> &#x2912; </button><p class="btnText">Hide Top Shelf</p></div>
@@ -979,6 +980,58 @@ function setProductPicture(direction){
 }
 
 
+function shiftProductsArrow(direction){
+
+	switch(direction){
+		case 'left':
+			var indexLeft = topShelfProductArray.indexOf(leftScrollProduct);
+			if(indexLeft === 0){
+				leftScrollProduct = topShelfProductArray[topShelfProductArray.length-1];
+			} else {
+				leftScrollProduct = topShelfProductArray[indexLeft-1];
+			}
+
+			var indexCenter = topShelfProductArray.indexOf(centerScrollProduct);
+			if(indexCenter === 0){
+				centerScrollProduct = topShelfProductArray[topShelfProductArray.length-1];
+			} else {
+				centerScrollProduct = topShelfProductArray[indexCenter-1];
+			}
+
+			var indexRight = topShelfProductArray.indexOf(rightScrollProduct);
+			if(indexRight === 0){
+				rightScrollProduct = topShelfProductArray[topShelfProductArray.length-1];
+			} else {
+				rightScrollProduct = topShelfProductArray[indexRight-1];
+			}
+			break;
+		case 'right':
+			var indexLeft = topShelfProductArray.indexOf(leftScrollProduct);
+			if(indexLeft === topShelfProductArray.length-1){
+				leftScrollProduct = topShelfProductArray[0];
+			} else {
+				leftScrollProduct = topShelfProductArray[indexLeft+1];
+			}
+			
+			var indexCenter = topShelfProductArray.indexOf(centerScrollProduct);
+			if(indexCenter === topShelfProductArray.length-1){
+				centerScrollProduct = topShelfProductArray[0];
+			} else {
+				centerScrollProduct = topShelfProductArray[indexCenter+1];
+			}
+
+			var indexRight = topShelfProductArray.indexOf(rightScrollProduct);
+			if(indexRight === topShelfProductArray.length-1){
+				rightScrollProduct = topShelfProductArray[0];
+			} else {
+				rightScrollProduct = topShelfProductArray[indexRight+1];
+			}
+			break;
+	}
+	setProductPicture('left');
+	setProductPicture('center');
+	setProductPicture('right');
+}
 
 
 var filterArray = [];
