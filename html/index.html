@@ -27,7 +27,7 @@
 
 
 	.topAlertDiv {
-		background-color: #DAA520;
+		background-color: white;
 		opacity: .97.5;
 		width: 100%;
 		padding-top: 10px;
@@ -46,7 +46,6 @@
 
 	.topAlertDiv a, a:visited {
 		background-color: transparent;
-		border: 1px solid white;
 		padding: 5px;
 		font-size: 20px;
 		text-decoration: none;
@@ -54,8 +53,8 @@
 	}
 
 	.topAlertDiv a:hover {
-		border: 1px solid black;
-		color: white;
+		color: black;
+		opacity: .75;
 	}
 
 	.topAlertDiv a:active {
@@ -71,9 +70,9 @@
 	.deliveryAdDiv {
 		width: 100%;
 		height: 80vh;
-		background: url(../imgs/delivery_ad.png) no-repeat center center;
-		background-size: 800px 500px;
-		background-color: white;
+		background: url(../imgs/delivery_ad.png) no-repeat center center fixed;
+		background-size: 100%;
+		background-color: black;
 	}
 
 	.searchDiv {
@@ -150,8 +149,7 @@
 		height: 100vh;
 		display: flex;
 		position: relative;
-		
-		background: url(../imgs/index_top.png) no-repeat center left fixed;
+		background: url(../imgs/index_top.png) no-repeat center left;
 		background-size: 800px 400px;
 		background-color: black;
 	}
@@ -176,7 +174,7 @@
 
 	#adSlotButton, #adSlotButton:focus {
 		background-color: transparent;
-		border: 1px solid #DAA520;
+		border: 1px solid red;
 		color: gainsboro;
 		padding: 10px;
 		margin-top: 25px;
@@ -271,14 +269,9 @@
 	.discoverContentBlockDiv > button:active {
 		opacity: .75;
 	}
-
-	/* Start of Explore Styling */
-
-
 	
 
 </style>
-
 
 <body>
 	<div class="homeLinkDiv"><a href="index.html"></a></div>
@@ -327,8 +320,16 @@
 
 
 	<div class="content">
-		<div class="topAlertDiv"><p>FREE DELIVERY ON ORDERS $50.00+</p><p><a href="products.html">Shop Now!</a></p></div>
-		<div class="deliveryAdDiv"></div>
+		<div class="topAlertDiv"><p><a href="products.html">FREE DELIVERY ON ORDERS OVER $50.00 - Shop Now!</a></p></div>
+
+		<div class="searchDiv">
+			<div class="searchBox">
+				<input type="text" class="inputBox" id="inputBox" placeholder="What alcoholic beverages are you shopping for?" />
+				<button class="searchButton" id="searchButton" onclick="productSearch()" />
+			</div>
+		</div>
+
+		<!-- <div class="deliveryAdDiv"></div> -->
 
 		<div class="adSlotDiv"><div class="adSlotImg"></div><div class="adSlotInfo">Browse Our Fine Collection of <br>Ménage à Trois!<br><button id="adSlotButton" onclick="productSearchValue('Menage a Trois')">SHOP Ménage à Trois</button></div></div>
 
@@ -363,12 +364,7 @@
 		</div>
 
 
-		<div class="searchDiv">
-			<div class="searchBox">
-				<input type="text" class="inputBox" id="inputBox" placeholder="What alcoholic beverages are you shopping for?" />
-				<button class="searchButton" id="searchButton" onclick="productSearch()" />
-			</div>
-		</div>
+		
 		
 
 		

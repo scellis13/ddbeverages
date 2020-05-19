@@ -252,6 +252,7 @@
 		font-family: Arial;
 		font-size: 12px;
 		position: relative;
+		width: 100%;
 	}
 	#sortTopLabel {
 		margin: 0;
@@ -264,7 +265,9 @@
 		box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2), 4px 6px 20px 0 rgba(0, 0, 0, 0.19);
 		outline: none;
 		border-radius: 3px;
-		position: relative;
+		position: absolute;
+		top: 0;
+		right: 0;
 	}
 
 	#sortTopLabel:hover, #sortTopLabel:focus {
@@ -274,6 +277,7 @@
 	}
 
 	#sortItemContainer {
+		display: none;
 		width: 150px;
 		min-width: 150px;
 		max-width: 150px;
@@ -283,9 +287,9 @@
 		padding: 10px;
 		position: absolute;
 		top: 37px;
-		left: 0;
+		right: 0;
 		z-index: 2;
-		display: none;
+		
 	}
 
 	.sortItem {
@@ -744,10 +748,10 @@
 			<div class="productTableRowContainer">
 				<div class="productTableTopRow">
 					<div id="sortContainer">
-						<p id="sortTopLabel" onclick="showSortItems()">Sort By: &#9660;</p>
+						<p id="sortTopLabel" onclick="showSortItems()">Sort By: &emsp; &emsp; &emsp; &emsp; &#9660;</p>
 						<div id="sortItemContainer">
-							<div class="sortItem">Price High-Low</div>
-							<div class="sortItem">Price Low-High</div>
+							<div class="sortItem" onclick="sortBy('highlow')">Price High-Low</div>
+							<div class="sortItem" onclick="sortBy('lowhigh')">Price Low-High</div>
 						</div>
 					</div>
 					<p id="filterResultLabel">&#9656; Found 0 Search Results with: ""</p>
@@ -1183,6 +1187,7 @@ filterData.forEach(function(item, index){
 					document.getElementById(primFiltTemp+"CheckBox").checked = false;
 				}
 			}
+			document.getElementById("sortTopLabel").innerHTML = "Sort By: &emsp; &emsp; &emsp; &emsp; &#9660;";
 			filterSearch(null);
 		}
 		
@@ -1291,7 +1296,7 @@ function setDropDownInfoDiv(picture, title, description, proof, price, size){
 	var titleElement = document.getElementById("dropDownInfo_title");
 	var descriptionElement = document.getElementById("dropDownInfo_description");
 	var proofElement = document.getElementById("dropDownInfo_proof");
-	var priceElement = "$" + document.getElementById("dropDownInfo_price");
+	var priceElement = document.getElementById("dropDownInfo_price");
 	var sizeElement = document.getElementById("dropDownInfo_size");
 	imgElement.style.background = "url(" + picture + ") no-repeat center center";
 	imgElement.style.backgroundSize = "275px 400px";
@@ -1299,7 +1304,7 @@ function setDropDownInfoDiv(picture, title, description, proof, price, size){
 	descriptionElement.innerText = description;
 	proofElement.innerText = "Proof: " + proof;
 	sizeElement.innerText = "Size: " + size;
-	priceElement.innerText = price;
+	priceElement.innerText = "$" + price;
 
 }
 
@@ -1331,7 +1336,45 @@ function showSortItems(){
 		container.style.display = "none";
 	}
 }
+var sorted = false;
 
+function sortBy(category){
+	sorted = true;
+	switch (category){
+		case "highlow":
+			arrayShowing.sort(compareByHighlow);
+			filterSearch(null);
+			sorted = false;
+			document.getElementById("sortTopLabel").innerHTML = "Sort By: High to Low &#9660;";
+			break;
+		case "lowhigh":
+			arrayShowing.sort(compareByLowHigh);
+			filterSearch(null);
+			sorted = false;
+			document.getElementById("sortTopLabel").innerHTML = "Sort By: Low to High &#9660;";
+			break;
+	}
+}
+
+function compareByHighlow(a, b) {
+    if (parseFloat(a[7]) === parseFloat(b[7])) {
+        return 0;
+    }
+    else {
+        return (parseFloat(a[7]) > parseFloat(b[7])) ? -1 : 1;
+    }
+}
+
+function compareByLowHigh(a, b){
+	if (parseFloat(a[7]) === parseFloat(b[7])) {
+        return 0;
+    }
+    else {
+        return (parseFloat(a[7]) < parseFloat(b[7])) ? -1 : 1;
+    }
+}
+
+var arrayShowing = productArray;
 
 function filterSearch(queryString){
 	//clear products
@@ -1352,26 +1395,29 @@ function filterSearch(queryString){
  	productsShowing = 0;
  	rowsShowing = 0;
 
- 	var tempArray = productArray;
+ 	if(!sorted){
+ 		arrayShowing = productArray;
+ 	}
 
  	if(filterArray.length > 0){
- 		tempArray = [];
+ 		arrayShowing = [];
  		for(var filter = 0; filter < filterArray.length; filter++){
  			var filterId = getFilterId(filterArray[filter]);
  			for(var i = 0; i < productArray.length; i++){
 				if(productArray[i][1] === filterId.toString()){
-					tempArray.push(productArray[i])
+					arrayShowing.push(productArray[i])
 				}
 			}
  		}
  	}
 
-	for(var i = 0; i < tempArray.length; i++){
-		if(tempArray[i][2].toLowerCase().includes(value.toLowerCase()) || tempArray[i][4].toLowerCase().includes(value.toLowerCase())){
-			addProduct(tempArray[i]);
+	for(var i = 0; i < arrayShowing.length; i++){
+		if(arrayShowing[i][2].toLowerCase().includes(value.toLowerCase()) || arrayShowing[i][4].toLowerCase().includes(value.toLowerCase())){
+			addProduct(arrayShowing[i]);
 		}
 	}
 	document.getElementById("filterResultLabel").innerHTML = "&#9656; Found "+productsShowing+" Search Results with: ' "+value+" '";
+	sorted=false;
 
 }
 
