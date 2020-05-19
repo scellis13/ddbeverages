@@ -197,6 +197,31 @@
 		cursor: pointer;
 	}
 
+	#filterArrayResults {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		font-family: Arial;
+	}
+		.filterContainer {
+			display: flex;
+		}
+
+		.filterRemoveButton {
+			font-size: 25px;
+			color: red;
+		}
+
+		.filterRemoveButton:hover {
+			cursor: pointer;
+		}
+
+		.filterLabel {
+			padding: 5px;
+			margin-right: 10px;
+			font-size: 15px;
+		}
+
 	.tableFilterDivRowHovered {
 		opacity: .5;
 	}
@@ -593,7 +618,10 @@
 			</div> <!-- End of Table Filter Column -->
 			<div class="productTableRowContainer">
 				<div class="productTableTopRow">
-					&#9656; Found 0 Search Results with: ""
+					<p id="filterResultLabel">&#9656; Found 0 Search Results with: ""</p>
+					<div id="filterArrayResults">
+						
+					</div>
 				</div>
 			</div>
 			</div>
@@ -672,10 +700,11 @@ var maxProductsPerRow = 6;
 var totalCartItems = 0;
 var cartProducts = [];
 
-
+/*
 for(var i = 0; i < productArray.length; i++){
 	addProduct(productArray[i]);
 }
+*/
 
 function addProduct(product){
 	/* Product array elements
@@ -876,6 +905,8 @@ function setProductPicture(direction){
 }
 
 
+
+
 var filterArray = [];
 var filterData = [["Wine", "Red"] , ["Wine", "White"], ["Wine", "Rose"], ["Wine", "Dessert"], ["Wine", "Champagne"], ["Beer", "IPA"], ["Beer", "Stout"], ["Beer", "Lager"], ["Beer", "Ale"], ["Spirits", "Gin"], ["Spirits", "Vodka"], ["Spirits", "Rum"], ["Spirits", "Tequila"], ["Spirits", "Brandy"], ["Spirits", "Whiskey"], ["Spirits", "Bourbon"], ["Spirits", "Scotch"]];
 var primaryFilters = [];
@@ -889,11 +920,52 @@ filterData.forEach(function(item, index){
 		$( "<div id=\""+primFiltTemp+"PrimaryFilterDiv\" class=\"tableFilterDivRow "+primFiltTemp+"MenuSelect\"><input type=\"checkbox\" id=\""+primFiltTemp+"CheckBox\" class=\"primCheckBox\" /><p>"+primFiltTemp+"</p><p id=\""+primFiltTemp+"Arrow\" class=\"dropDownArrow\">&#9660;</p></div>" ).insertAfter("#filterListDiv");
 	}
 
-	//Add to primFiltTemp + PrimaryFilter
-	$( "<div id=\"" + item[1] + "SubFilterDiv\" class=\"tableFilterDivRow subRow "+primFiltTemp+"PrimaryFilterDiv\"><input class=\"subCheckBox\" id =\"" + item[1] + "SubCheckBox\" type=\"checkbox\" /><p>"+item[1]+"</p></div>" ).insertAfter( "#"+primFiltTemp+"PrimaryFilterDiv" );
 
+
+	//Add to primFiltTemp + PrimaryFilter
+	$( "<div id=\"" + item[1] + "SubFilterDiv\" class=\"tableFilterDivRow subRow "+primFiltTemp+"PrimaryFilterDiv\"><input class=\"subCheckBox "+primFiltTemp+"CheckBox\" id=\""+item[1] + "SubCheckBox\" type=\"checkbox\" /><p>"+item[1]+"</p></div>" ).insertAfter( "#"+primFiltTemp+"PrimaryFilterDiv" );
+
+		var subCheck = document.getElementById(item[1] + "SubCheckBox");;
+		subCheck.onclick = function() {
+			if(subCheck.checked === true){
+				displayFilter(item[1]);
+				filterArray.push(item[1]);
+				
+			} else {
+				removeFilter(item[1]);
+				var index = filterArray.indexOf(item[1].toString());
+				if (index !== -1) filterArray.splice(index, 1);
+				
+			}
+		}
+		
 
 });
+
+function displayFilter(filterName){
+	//Insert Filter added into: filterArrayResults
+	//Filter Container Classes: filterContainer
+
+	/*<div class="filterContainer"><div class="filterRemoveButton">&times;</div><div class="filterLabel"> Object HEre </div></div>
+	*/
+	if(filterArray.length < 1){
+		if(!(filterArray.includes(filterName))){
+			document.getElementById("filterArrayResults").innerHTML = "<div id=\"filterDiv"+filterName+"\" class=\"filterContainer\"><div id=\"remove"+filterName+"\" class=\"filterRemoveButton\">&times;</div><div class=\"filterLabel\">"+filterName+"</div></div>";
+		}
+	} else {
+		$("<div id=\"filterDiv"+filterName+"\" class=\"filterContainer\"><div id=\"remove"+filterName+"\" class=\"filterRemoveButton\">&times;</div><div class=\"filterLabel\">"+filterName+"</div></div>").insertAfter(document.getElementsByClassName("filterContainer")[filterArray.length-1]);
+	}
+
+	document.getElementById("remove"+filterName).onclick = function(){
+		document.getElementById(filterName + "SubCheckBox").click();
+	}
+	
+}
+
+function removeFilter(filterName){
+	document.getElementById("filterDiv" + filterName).remove();
+}
+
 
 setPrimaryFilterFunctions();
 
@@ -920,7 +992,23 @@ function setPrimaryFilterFunctions(){
 			}  
     	}
     });
+
+    $(".primCheckBox").click(function() {
+    	var name = $(this).attr('id');
+    	var boxes = document.getElementsByClassName(name);
+
+    	for(var i = 0; i < boxes.length; i++){
+		  	if(this.checked && !(boxes[i].checked)){
+		  		boxes[i].click();
+		  	} else if(!(this.checked) && boxes[i].checked){
+		  		boxes[i].click();
+		  	}
+    	}
+    	
+    });
+
 }
+
 
 /* Filter Primary Categories by:
 	1. Wine
@@ -1000,31 +1088,21 @@ function filterSearch(){
 
 
 	var searchField = document.getElementById("productFilterSearch");
-	var value = searchField.value.toLowerCase();
+	var value = searchField.value;
 
  	productsShowing = 0;
  	rowsShowing = 0;
 
-		/*
-		0: Primary Category ID
-		1: Sub Category ID
-		2: Product Title
-		3: Image URL
-		4: Description
-		5: Proof
-		6: Size
-		7: Price
-		8: Top Shelf
-		9: Product ID
-		*/
 	for(var i = 0; i < productArray.length; i++){
-		if(productArray[i][2].toLowerCase().includes(value) || productArray[i][4].toLowerCase().includes(value)){
+		if(productArray[i][2].toLowerCase().includes(value.toLowerCase()) || productArray[i][4].toLowerCase().includes(value.toLowerCase())){
 			addProduct(productArray[i]);
 		}
 	}
-	document.getElementById("")
+	document.getElementById("filterResultLabel").innerHTML = "&#9656; Found "+productsShowing+" Search Results with: ' "+value+" '";
 
 }
+
+filterSearch();
 
 
 </script>  
