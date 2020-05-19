@@ -584,7 +584,7 @@
 		<div class="productTableContent">
 			<div class="productTableFilters">
 				
-				<div class="productTableFilterDiv"><input type="search" id="productFilterSearch" /></div>
+				<div class="productTableFilterDiv"><input type="search" id="productFilterSearch" oninput="filterSearch()" /></div>
 				<div id="filterListDiv" class="productTableFilterDiv">
 					
 					<!-- Javascript Generated Filter List -->
@@ -664,6 +664,8 @@ var productArray = [["2","2","Ciroc Ultra-Premium Vodka","../imgs/products_imgs/
 ["1","14","Montonico Port","../imgs/products_imgs/product_size.png","'Montonico Port is an intensely flavored and moderately sweet fortified wine, offering nutty flavors mixed with fruity aromas such as black currant, plum, caramel and dried red fruits.'","19","750 ML"," $12.49 ","No","1034"],
 ["1","14","Offley Ruby Port","../imgs/products_imgs/product_size.png","Offley Ruby Port is a sweet red and black fruits dominate the nose and flavor profile of this wonderful dessert wine. This intensely fruity wine is a great way to introduce yourself to the quality of one of the most highly regarded port houses in the world. Serve with Aged Cheddars & Goudas.","19","750 ML"," $14.99 ","No","1035"]];
 
+
+
 var productsShowing = 0;
 var rowsShowing = 0;
 var maxProductsPerRow = 6;
@@ -718,10 +720,12 @@ function addProduct(product){
 
 
 	var infoIcon = document.getElementById(productIdData+'InfoIcon');
+	
 	infoIcon.onclick = function() {
 		setDropDownInfoDiv(product[3], product[2], product[4], product[5], product[7]);
 		showDropDownInfoDiv();
 	}
+
 
 	var cartButton = document.getElementById(productIdData+'CartButton');
 	cartButton.onclick = function() {
@@ -918,6 +922,31 @@ function setPrimaryFilterFunctions(){
     });
 }
 
+/* Filter Primary Categories by:
+	1. Wine
+	2. Spirits
+	3. Beer
+
+	Filter Sub Categories by:
+	1. Gin
+	2. Vodka
+	3. Rum
+	4. Tequila
+	5. Brandy
+	6. Whiskey
+	7. IPA
+	8. Stout
+	9. Lager
+	10. Ale
+	11. Red
+	12. White
+	13. Rose
+	14. Dessert
+	15. Champagne
+	16. Bourbon
+	17. Scotch
+*/
+
 
 
 var dropDownInfoDiv = document.getElementById("dropDownInfoDiv");
@@ -960,7 +989,42 @@ window.onclick = function() {
 
 
 
+function filterSearch(){
+	filterArray = new Array();
+	//clear products
+	var rows = document.getElementsByClassName("productTableRow");
 
+	while(rows.length > 0){
+		rows[0].parentNode.removeChild(rows[0]);
+	}
+
+
+	var searchField = document.getElementById("productFilterSearch");
+	var value = searchField.value.toLowerCase();
+
+ 	productsShowing = 0;
+ 	rowsShowing = 0;
+
+		/*
+		0: Primary Category ID
+		1: Sub Category ID
+		2: Product Title
+		3: Image URL
+		4: Description
+		5: Proof
+		6: Size
+		7: Price
+		8: Top Shelf
+		9: Product ID
+		*/
+	for(var i = 0; i < productArray.length; i++){
+		if(productArray[i][2].toLowerCase().includes(value) || productArray[i][4].toLowerCase().includes(value)){
+			addProduct(productArray[i]);
+		}
+	}
+	document.getElementById("")
+
+}
 
 
 </script>  
